@@ -38,7 +38,7 @@
             navy: '#0A0F1E',
             surface: '#111827',
             border: '#1F2937',
-            red: { DEFAULT: '#E11D48', hover: '#BE123C' },
+            red: { DEFAULT: '#cb4154', hover: '#a8323f' },
             teal: '#0EA5E9',
             purple: '#8B5CF6',
             emerald: '#10B981',
@@ -57,7 +57,7 @@
     "name": "ROVIMAX",
     "description": "Online marketingová agentura specializovaná na PPC kampaně, SEO optimalizaci, datovou analytiku a tvorbu webů s AI.",
     "url": "https://rovimax.cz",
-    "logo": "https://rovimax.cz/og-image.jpg",
+    "logo": "https://rovimax.cz/logo.png",
     "areaServed": ["CZ", "SK"],
     "knowsAbout": ["PPC kampaně", "SEO optimalizace", "Datová analytika", "Tvorba webů s AI", "META reklama", "Online marketing"],
     "contactPoint": {
@@ -102,7 +102,7 @@
     .blob-3 {
       width: 500px; height: 500px;
       bottom: 10%; left: 20%;
-      background: radial-gradient(ellipse, rgba(225,29,72,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(203,65,84,0.10) 0%, transparent 70%);
       animation: blob-drift-c 20s ease-in-out infinite;
     }
     .blob-4 {
@@ -230,25 +230,25 @@
 
     /* ── Primary button */
     .btn-red {
-      background: linear-gradient(135deg, #E11D48, #BE123C);
+      background: linear-gradient(135deg, #cb4154, #a8323f);
       color: #fff;
-      box-shadow: 0 0 20px rgba(225, 29, 72, 0.35);
+      box-shadow: 0 0 20px rgba(203, 65, 84, 0.35);
       transition: all 0.25s;
     }
     .btn-red:hover {
-      box-shadow: 0 0 40px rgba(225, 29, 72, 0.6);
+      box-shadow: 0 0 40px rgba(203, 65, 84, 0.6);
       transform: translateY(-2px);
     }
 
     /* ── Gradient text */
-    .grad { background: linear-gradient(135deg, #E11D48 0%, #8B5CF6 60%, #0EA5E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grad { background: linear-gradient(135deg, #cb4154 0%, #8B5CF6 60%, #0EA5E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
     /* ── Scroll reveal */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── Glow dots */
-    .glow-red   { box-shadow: 0 0 16px 4px rgba(225, 29, 72, 0.7); }
+    .glow-red   { box-shadow: 0 0 16px 4px rgba(203, 65, 84, 0.7); }
     .glow-blue  { box-shadow: 0 0 16px 4px rgba(14, 165, 233, 0.7); }
     .glow-purple{ box-shadow: 0 0 16px 4px rgba(139, 92, 246, 0.7); }
     .glow-green { box-shadow: 0 0 16px 4px rgba(16, 185, 129, 0.7); }
@@ -267,7 +267,7 @@
       backdrop-filter: blur(8px);
     }
     .field::placeholder { color: #374151; }
-    .field:focus { border-color: rgba(225, 29, 72, 0.6); box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.1); }
+    .field:focus { border-color: rgba(203, 65, 84, 0.6); box-shadow: 0 0 0 3px rgba(203, 65, 84, 0.1); }
 
     /* ── Orbit ring (hero decoration) */
     .orbit-ring {
@@ -320,8 +320,8 @@
 <nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" aria-label="Hlavní navigace">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <a href="#" class="flex-shrink-0 text-xl font-black tracking-tight" aria-label="ROVIMAX – zpět na začátek">
-        ROVI<span class="text-red">MAX</span>
+      <a href="#" class="flex-shrink-0" aria-label="ROVIMAX – zpět na začátek">
+        <img src="logo.png" alt="ROVIMAX" class="h-8 w-auto">
       </a>
       <div class="hidden lg:flex items-center gap-8" role="menubar">
         <a href="#sluzby" class="text-sm font-medium text-slate-400 hover:text-white transition-colors" role="menuitem">Služby</a>
@@ -372,7 +372,7 @@
     <div class="fc absolute top-3/4 left-[30%] w-2 h-2 rounded-full bg-purple glow-purple opacity-55"></div>
 
     <!-- Geometric shapes -->
-    <div class="fa absolute top-24 right-[14%] w-14 h-14 lg:w-20 lg:h-20 rounded-md opacity-60" style="background: linear-gradient(135deg, rgba(225,29,72,0.6), rgba(139,92,246,0.3)); border: 1px solid rgba(225,29,72,0.3);"></div>
+    <div class="fa absolute top-24 right-[14%] w-14 h-14 lg:w-20 lg:h-20 rounded-md opacity-60" style="background: linear-gradient(135deg, rgba(203,65,84,0.6), rgba(139,92,246,0.3)); border: 1px solid rgba(203,65,84,0.3);"></div>
     <div class="fb absolute top-44 right-[5%] w-10 h-10 rounded-full opacity-40" style="background: linear-gradient(135deg, rgba(14,165,233,0.5), rgba(139,92,246,0.3)); border: 1px solid rgba(14,165,233,0.4);"></div>
     <div class="fd absolute bottom-[30%] left-[8%] w-9 h-9 rounded-sm opacity-50" style="background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4);"></div>
     <div class="fe absolute bottom-[22%] left-[20%] w-7 h-7 opacity-45 rotate-45" style="background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.4);"></div>
@@ -467,8 +467,8 @@
 
       <!-- PPC -->
       <article class="reveal glass-card rounded-2xl p-8 hover:border-red/30" id="ppc">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(225,29,72,0.1); border: 1px solid rgba(225,29,72,0.2);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(203,65,84,0.1); border: 1px solid rgba(203,65,84,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
         <h3 class="text-xl font-bold text-white mb-3">PPC kampaně na Google, Sklik a Meta</h3>
         <p class="text-slate-400 leading-relaxed mb-5">Spravujeme PPC kampaně, které nepálí rozpočet do prázdna. Každá koruna je nasměrovaná tak, aby přinesla maximum kliků, konverzí a tržeb. Průběžně testujeme, optimalizujeme a reportujeme.</p>
@@ -479,9 +479,9 @@
           <li class="flex gap-2"><span class="text-red mt-0.5">✓</span> Měsíční reporting s jasnými KPI</li>
         </ul>
         <div class="flex flex-wrap gap-2 mb-7">
-          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(225,29,72,0.1);color:#E11D48;border:1px solid rgba(225,29,72,0.2);">Google Ads</span>
-          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(225,29,72,0.1);color:#E11D48;border:1px solid rgba(225,29,72,0.2);">Sklik</span>
-          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(225,29,72,0.1);color:#E11D48;border:1px solid rgba(225,29,72,0.2);">Meta Ads</span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(203,65,84,0.1);color:#E11D48;border:1px solid rgba(203,65,84,0.2);">Google Ads</span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(203,65,84,0.1);color:#E11D48;border:1px solid rgba(203,65,84,0.2);">Sklik</span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(203,65,84,0.1);color:#E11D48;border:1px solid rgba(203,65,84,0.2);">Meta Ads</span>
         </div>
         <a href="#kontakt" class="inline-flex items-center gap-1.5 text-red text-sm font-semibold group">
           Chci řídit PPC efektivněji
@@ -606,8 +606,8 @@
       </div>
       <div class="reveal space-y-3">
         <div class="flex gap-4 items-start p-5 glass rounded-xl">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(225,29,72,0.1);border:1px solid rgba(225,29,72,0.2);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.1);border:1px solid rgba(203,65,84,0.2);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
           </div>
           <div><p class="font-semibold text-white text-sm">Data-driven přístup</p><p class="text-slate-500 text-sm mt-0.5">Každé rozhodnutí stojí na číslech, ne na dojmech</p></div>
         </div>
@@ -652,8 +652,8 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="reveal glass-card rounded-2xl p-7 group hover:border-red/30">
-        <div class="text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(225,29,72,0.06);">01</div>
-        <div class="w-11 h-11 rounded-full bg-red flex items-center justify-center mb-5" style="box-shadow: 0 0 24px rgba(225,29,72,0.4);">
+        <div class="text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(203,65,84,0.06);">01</div>
+        <div class="w-11 h-11 rounded-full bg-red flex items-center justify-center mb-5" style="box-shadow: 0 0 24px rgba(203,65,84,0.4);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h3 class="text-base font-bold text-white mb-2">Konzultace zdarma</h3>
@@ -711,7 +711,7 @@
     </div>
     <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
       <a href="blog.html" class="group glass-card rounded-2xl p-6 block hover:border-red/30">
-        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium mb-4" style="background:rgba(225,29,72,0.1);color:#E11D48;">PPC</span>
+        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium mb-4" style="background:rgba(203,65,84,0.1);color:#E11D48;">PPC</span>
         <h3 class="text-base font-bold text-white mb-2 group-hover:text-red transition-colors leading-snug">Jak správně nastavit PPC kampaně na Google Ads v roce 2026</h3>
         <p class="text-slate-500 text-sm mb-4 leading-relaxed">Praktický průvodce nastavením efektivní kampaně od výzkumu klíčových slov po první konverze.</p>
         <span class="text-xs text-slate-600">5 min čtení</span>
@@ -736,7 +736,7 @@
 <!-- ═══════════════════════════════════ CONTACT ══ -->
 <section id="kontakt" class="py-24 lg:py-36 relative overflow-hidden" aria-labelledby="kontakt-heading">
   <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red/30 to-transparent" aria-hidden="true"></div>
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style="background: radial-gradient(ellipse, rgba(225,29,72,0.04), transparent);" aria-hidden="true"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style="background: radial-gradient(ellipse, rgba(203,65,84,0.04), transparent);" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -751,13 +751,13 @@
         <div class="space-y-4">
           <div class="flex items-center gap-4">
             <div class="w-11 h-11 rounded-xl glass flex items-center justify-center flex-shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <a href="mailto:info@rovimax.cz" class="text-slate-300 hover:text-white transition-colors">info@rovimax.cz</a>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-11 h-11 rounded-xl glass flex items-center justify-center flex-shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
             </div>
             <a href="tel:+420000000000" class="text-slate-300 hover:text-white transition-colors">+420 XXX XXX XXX</a>
           </div>
@@ -818,7 +818,7 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
       <div>
-        <p class="text-xl font-black mb-3">ROVI<span class="text-red">MAX</span></p>
+        <img src="logo.png" alt="ROVIMAX" class="h-7 w-auto mb-3">
         <p class="text-slate-500 text-sm leading-relaxed">Online marketingová agentura. PPC · SEO · Data · AI</p>
         <p class="text-slate-500 text-sm mt-2">Praha, Česká republika</p>
       </div>

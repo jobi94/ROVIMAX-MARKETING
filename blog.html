@@ -41,7 +41,7 @@
             navy: '#0F172A',
             surface: '#1E293B',
             border: '#334155',
-            red: { DEFAULT: '#E11D48', hover: '#BE123C' },
+            red: { DEFAULT: '#cb4154', hover: '#a8323f' },
             teal: '#0EA5E9',
             purple: '#8B5CF6',
             emerald: '#10B981',
@@ -86,15 +86,15 @@
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
-    .btn-red { background: #E11D48; color: #fff; transition: background 0.2s, transform 0.2s; }
-    .btn-red:hover { background: #BE123C; transform: translateY(-1px); }
+    .btn-red { background: #cb4154; color: #fff; transition: background 0.2s, transform 0.2s; }
+    .btn-red:hover { background: #a8323f; transform: translateY(-1px); }
 
-    .grad { background: linear-gradient(135deg, #E11D48 0%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grad { background: linear-gradient(135deg, #cb4154 0%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
     .cat-btn { transition: all 0.2s; }
     .cat-btn.active { color: #fff; }
-    .cat-btn[data-cat="all"].active { background: #E11D48; border-color: #E11D48; }
-    .cat-btn[data-cat="ppc"].active { background: #E11D48; border-color: #E11D48; }
+    .cat-btn[data-cat="all"].active { background: #cb4154; border-color: #cb4154; }
+    .cat-btn[data-cat="ppc"].active { background: #cb4154; border-color: #cb4154; }
     .cat-btn[data-cat="seo"].active { background: #10B981; border-color: #10B981; }
     .cat-btn[data-cat="data"].active { background: #0EA5E9; border-color: #0EA5E9; }
     .cat-btn[data-cat="ai"].active { background: #8B5CF6; border-color: #8B5CF6; }
@@ -103,7 +103,7 @@
     article.post { transition: opacity 0.3s ease, transform 0.3s ease; }
     article.post.hidden-post { opacity: 0; pointer-events: none; height: 0; overflow: hidden; transform: scale(0.97); }
 
-    :focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; }
+    :focus-visible { outline: 2px solid #cb4154; outline-offset: 3px; }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0F172A; }
@@ -122,8 +122,8 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
 
-      <a href="index.html" class="flex-shrink-0 text-xl font-black tracking-tight" aria-label="ROVIMAX – zpět na homepage">
-        ROVI<span class="text-red">MAX</span>
+      <a href="index.html" class="flex-shrink-0" aria-label="ROVIMAX – zpět na homepage">
+        <img src="logo.png" alt="ROVIMAX" class="h-8 w-auto">
       </a>
 
       <div class="hidden lg:flex items-center gap-8" role="menubar">
@@ -264,7 +264,7 @@
       <article class="post card-hover bg-surface border border-border rounded-2xl overflow-hidden" data-cat="ppc">
         <div class="h-44 bg-gradient-to-br from-red/20 to-red/5 flex items-center justify-center relative">
           <div class="w-16 h-16 rounded-2xl bg-red/20 flex items-center justify-center" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-surface/60 to-transparent"></div>
         </div>
@@ -414,7 +414,7 @@
       <article class="post card-hover bg-surface border border-border rounded-2xl overflow-hidden" data-cat="ppc">
         <div class="h-44 bg-gradient-to-br from-red/15 to-purple/10 flex items-center justify-center relative">
           <div class="w-16 h-16 rounded-2xl bg-red/15 flex items-center justify-center" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-surface/60 to-transparent"></div>
         </div>
