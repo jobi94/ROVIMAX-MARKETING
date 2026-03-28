@@ -73,7 +73,7 @@
     html { scroll-behavior: smooth; }
     body { background-color: #0A0F1E; color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-    /* ── CSS background blobs (replaces Three.js — GPU compositor only) */
+    /* ── CSS background blobs (replaces Three.js - GPU compositor only) */
     #bg-blobs {
       position: fixed;
       inset: 0;
@@ -296,6 +296,10 @@
 
     :focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; }
 
+    .nav-dropdown { opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease; }
+    .nav-dropdown-trigger:hover .nav-dropdown,
+    .nav-dropdown-trigger:focus-within .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
     @media (prefers-reduced-motion: reduce) {
       .fa,.fb,.fc,.fd,.fe,.ff,.fg,.blob,.star { animation: none; }
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -316,7 +320,7 @@
     .mob-card .mob-cat  { color: #00fffa; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
     .mob-card .mob-title { color: #fff; font-size: 16px; font-weight: 900; }
 
-    /* ── Blobs — scale down on mobile */
+    /* ── Blobs - scale down on mobile */
     @media (max-width: 640px) {
       .blob-1 { width: 300px; height: 300px; }
       .blob-2 { width: 250px; height: 250px; }
@@ -345,15 +349,75 @@
 <nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" aria-label="Hlavní navigace">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <a href="#" class="flex-shrink-0" aria-label="ROVIMAX – zpět na začátek">
-        <img src="logo-new.svg" alt="ROVIMAX" class="h-11 w-auto">
+      <a href="#" class="flex-shrink-0" aria-label="ROVIMAX - zpět na začátek">
+        <img src="logo-new.svg" alt="ROVIMAX" class="h-12 w-auto">
       </a>
       <div class="hidden lg:flex items-center gap-1" role="menubar">
-        <a href="#sluzby" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Služby</a>
         <a href="#jak-to-funguje" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Jak to funguje</a>
         <a href="#reference" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Naše práce</a>
         <a href="blog.html" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Blog</a>
-        <a href="#kontakt" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Kontakt</a>
+        <div class="nav-dropdown-trigger relative" role="none">
+          <a href="#sluzby" class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">
+            Služby
+            <svg class="opacity-50 mt-px" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
+          </a>
+          <div class="nav-dropdown absolute top-full left-0 pt-1 z-50">
+            <div class="glass-strong rounded-xl p-1.5 min-w-[200px]" style="border:1px solid rgba(255,255,255,0.1);">
+              <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                PPC kampaně
+              </a>
+              <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </div>
+                SEO optimalizace
+              </a>
+              <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                Datová analytika
+              </a>
+              <a href="email.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                </div>
+                E-mail marketing
+              </a>
+              <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
+                </div>
+                Tvorba webů s AI
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-dropdown-trigger relative" role="none">
+          <a href="#" class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">
+            Společnost
+            <svg class="opacity-50 mt-px" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
+          </a>
+          <div class="nav-dropdown absolute top-full left-0 pt-1 z-50">
+            <div class="glass-strong rounded-xl p-1.5 min-w-[160px]" style="border:1px solid rgba(255,255,255,0.1);">
+              <a href="#kontakt" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                </div>
+                Kontakt
+              </a>
+              <a href="o-nas.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                O nás
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="flex items-center gap-3">
         <a href="#kontakt" class="hidden sm:inline-flex btn-red items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold">Konzultace zdarma</a>
@@ -369,11 +433,22 @@
   </div>
   <div id="mobile-menu" class="hidden lg:hidden border-t border-white/[0.06]" style="background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);">
     <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col gap-1">
-      <a href="#sluzby" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Služby</a>
       <a href="#jak-to-funguje" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Jak to funguje</a>
       <a href="#reference" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Naše práce</a>
       <a href="blog.html" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Blog</a>
-      <a href="#kontakt" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Kontakt</a>
+      <a href="#sluzby" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Služby</a>
+      <div class="pl-4 space-y-0.5 -mt-1 mb-1">
+        <a href="ppc.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">PPC kampaně</a>
+        <a href="seo.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">SEO optimalizace</a>
+        <a href="analytics.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Datová analytika</a>
+        <a href="email.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">E-mail marketing</a>
+        <a href="ai-weby.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Tvorba webů s AI</a>
+      </div>
+      <a href="#" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Společnost</a>
+      <div class="pl-4 space-y-0.5 -mt-1 mb-1">
+        <a href="#kontakt" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Kontakt</a>
+        <a href="o-nas.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">O nás</a>
+      </div>
       <a href="#kontakt" class="mt-3 btn-red flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-semibold" onclick="closeMenu()">Konzultace zdarma</a>
     </div>
   </div>
@@ -429,14 +504,14 @@
       </div>
 
       <!-- H1 -->
-      <h1 id="hero-heading" class="text-[2.2rem] sm:text-6xl lg:text-[5.5rem] font-black leading-[1.1] sm:leading-[1.04] tracking-tight mb-7">
+      <h1 id="hero-heading" class="text-[2rem] sm:text-[54px] lg:text-[5rem] font-black leading-[1.1] sm:leading-[1.04] tracking-tight mb-7">
         Online marketing,<br>
         který přináší<br>
         <span class="grad">měřitelné výsledky<span style="font-size:0.96em;line-height:1;vertical-align:baseline;">!</span></span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mb-10" style="text-shadow: 0 0 40px rgba(0,0,0,0.8);">
-        Nemusíte hádat, co funguje. S ROVIMAX získáte online marketingovou strategii postavenou na datech, automatizaci a technologiích, které váš byznys posunou tam, kde ho chcete mít — na první stránku výsledků i v hlavách vašich zákazníků.
+      <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-10" style="text-shadow: 0 0 40px rgba(0,0,0,0.8);">
+        Nemusíte hádat, co funguje. S ROVIMAX získáte online marketingovou strategii postavenou na datech, automatizaci a technologiích, které váš byznys posunou tam, kde ho chcete mít - na první stránku výsledků i v hlavách vašich zákazníků.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 mb-16">
@@ -489,7 +564,7 @@
         Co pro vás uděláme<br>v online marketingu
       </h2>
       <p class="text-slate-400 text-lg">
-        Každý projekt začíná analýzou. Každá kampaň končí výsledky, které vidíte v reálném čase. Pracujeme s Google Ads, Sklik, Meta Ads a dalšími platformami — vždycky s cílem maximální návratnosti vaší investice.
+        Každý projekt začíná analýzou. Každá kampaň končí výsledky, které vidíte v reálném čase. Pracujeme s Google Ads, Sklik, Meta Ads a dalšími platformami - vždycky s cílem maximální návratnosti vaší investice.
       </p>
     </div>
 
@@ -513,10 +588,15 @@
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(203,65,84,0.1);color:#E11D48;border:1px solid rgba(203,65,84,0.2);">Sklik</span>
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(203,65,84,0.1);color:#E11D48;border:1px solid rgba(203,65,84,0.2);">Meta Ads</span>
         </div>
-        <a href="#kontakt" class="inline-flex items-center gap-1.5 text-red text-sm font-semibold group">
-          Chci řídit PPC efektivněji
-          <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="ppc.html" class="inline-flex items-center gap-1.5 text-red text-sm font-semibold group">
+            Zjistit více
+            <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#kontakt" class="inline-flex items-center gap-1.5 text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">
+            Konzultace zdarma
+          </a>
+        </div>
       </article>
 
       <!-- SEO -->
@@ -524,7 +604,7 @@
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-white mb-3">SEO optimalizace — buďte viditelní na Googlu</h3>
+        <h3 class="text-xl font-bold text-white mb-3">SEO optimalizace - buďte viditelní na Googlu</h3>
         <p class="text-slate-400 leading-relaxed mb-5">Organická návštěvnost je dlouhodobě nejlevnější zdroj zákazníků. Naše SEO optimalizace zahrnuje technické audity, on-page úpravy, obsahovou strategii i budování zpětných odkazů.</p>
         <ul class="space-y-2 mb-7 text-sm text-slate-400">
           <li class="flex gap-2"><span class="text-emerald mt-0.5">✓</span> Technický SEO audit a opravy</li>
@@ -537,10 +617,15 @@
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(16,185,129,0.1);color:#10B981;border:1px solid rgba(16,185,129,0.2);">On-page</span>
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(16,185,129,0.1);color:#10B981;border:1px solid rgba(16,185,129,0.2);">Link building</span>
         </div>
-        <a href="#kontakt" class="inline-flex items-center gap-1.5 text-emerald text-sm font-semibold group">
-          Chci lepší pozice na Googlu
-          <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="seo.html" class="inline-flex items-center gap-1.5 text-emerald text-sm font-semibold group">
+            Zjistit více
+            <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#kontakt" class="inline-flex items-center gap-1.5 text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">
+            Konzultace zdarma
+          </a>
+        </div>
       </article>
 
       <!-- Data -->
@@ -554,17 +639,19 @@
           <li class="flex gap-2"><span class="text-teal mt-0.5">✓</span> Nastavení Google Analytics 4 a konverzního trackingu</li>
           <li class="flex gap-2"><span class="text-teal mt-0.5">✓</span> Custom dashboardy v Looker Studiu nebo Power BI</li>
           <li class="flex gap-2"><span class="text-teal mt-0.5">✓</span> Analýzu uživatelského chování a konverzních cest</li>
-          <li class="flex gap-2"><span class="text-teal mt-0.5">✓</span> Doporučení na základě dat — ne domněnek</li>
+          <li class="flex gap-2"><span class="text-teal mt-0.5">✓</span> Doporučení na základě dat - ne domněnek</li>
         </ul>
         <div class="flex flex-wrap gap-2 mb-7">
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(14,165,233,0.1);color:#0EA5E9;border:1px solid rgba(14,165,233,0.2);">GA4</span>
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(14,165,233,0.1);color:#0EA5E9;border:1px solid rgba(14,165,233,0.2);">Looker Studio</span>
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(14,165,233,0.1);color:#0EA5E9;border:1px solid rgba(14,165,233,0.2);">Power BI</span>
         </div>
-        <a href="#kontakt" class="inline-flex items-center gap-1.5 text-teal text-sm font-semibold group">
-          Chci rozhodovat na základě dat
-          <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="analytics.html" class="inline-flex items-center gap-1.5 text-teal text-sm font-semibold group">
+            Zjistit více →
+          </a>
+          <a href="#kontakt" class="text-slate-400 hover:text-white text-sm transition-colors">Konzultace zdarma</a>
+        </div>
       </article>
 
       <!-- AI -->
@@ -572,10 +659,10 @@
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 2c2.76 2.76 4.5 6.58 4.5 10S14.76 19.24 12 22"/><path d="M12 2c-2.76 2.76-4.5 6.58-4.5 10S9.24 19.24 12 22"/><path d="M2 12h20"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-white mb-3">Tvorba webů pomocí AI — moderní web, který prodává</h3>
-        <p class="text-slate-400 leading-relaxed mb-5">Tvoříme moderní weby s využitím umělé inteligence — rychleji, chytřeji a s lepším UX, než klasické postupy umožňují. Web, který není jen hezká vizitka, ale aktivní prodejní kanál.</p>
+        <h3 class="text-xl font-bold text-white mb-3">Tvorba webů pomocí AI - moderní web, který prodává</h3>
+        <p class="text-slate-400 leading-relaxed mb-5">Tvoříme moderní weby s využitím umělé inteligence - rychleji, chytřeji a s lepším UX, než klasické postupy umožňují. Web, který není jen hezká vizitka, ale aktivní prodejní kanál.</p>
         <ul class="space-y-2 mb-7 text-sm text-slate-400">
-          <li class="flex gap-2"><span class="text-purple mt-0.5">✓</span> Rychlejší nasazení — týdny, ne měsíce</li>
+          <li class="flex gap-2"><span class="text-purple mt-0.5">✓</span> Rychlejší nasazení - týdny, ne měsíce</li>
           <li class="flex gap-2"><span class="text-purple mt-0.5">✓</span> UX optimalizovaný na základě dat a výzkumu</li>
           <li class="flex gap-2"><span class="text-purple mt-0.5">✓</span> Responzivní design na každém zařízení</li>
           <li class="flex gap-2"><span class="text-purple mt-0.5">✓</span> SEO-ready struktura od prvního dne</li>
@@ -585,10 +672,42 @@
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(139,92,246,0.1);color:#8B5CF6;border:1px solid rgba(139,92,246,0.2);">SEO-ready</span>
           <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(139,92,246,0.1);color:#8B5CF6;border:1px solid rgba(139,92,246,0.2);">Responzivní</span>
         </div>
-        <a href="#kontakt" class="inline-flex items-center gap-1.5 text-purple text-sm font-semibold group">
-          Chci moderní web s AI
-          <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="ai-weby.html" class="inline-flex items-center gap-1.5 text-sm font-semibold group" style="color:#8B5CF6;">
+            Zjistit více
+            <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#kontakt" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm transition-colors">Konzultace zdarma</a>
+        </div>
+      </article>
+
+      <!-- E-mail marketing -->
+      <article class="reveal glass-card rounded-2xl p-8" style="border-color:rgba(245,158,11,0.1);" id="email-marketing">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">E-mail marketing - správná zpráva, správnému člověku</h3>
+        <p class="text-slate-400 leading-relaxed mb-5">E-mail je stále jeden z nejefektivnějších kanálů. Ne proto, že je levný - ale proto, že zasahuje lidi, kteří o vás zájem projevili. Newslettery, automatizace a segmentace na míru.</p>
+        <ul class="space-y-2 mb-7 text-sm text-slate-400">
+          <li class="flex gap-2"><span style="color:#F59E0B;" class="mt-0.5">✓</span> Tvorbu a pravidelnou správu newsletterů</li>
+          <li class="flex gap-2"><span style="color:#F59E0B;" class="mt-0.5">✓</span> Automatizaci e-mailových sekvencí - uvítací, prodejní, retenční</li>
+          <li class="flex gap-2"><span style="color:#F59E0B;" class="mt-0.5">✓</span> Segmentaci databáze kontaktů podle chování a zájmů</li>
+          <li class="flex gap-2"><span style="color:#F59E0B;" class="mt-0.5">✓</span> Nastavení nástrojů a propojení s webem a kampaněmi</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mb-7">
+          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(245,158,11,0.1);color:#F59E0B;border:1px solid rgba(245,158,11,0.2);">Mailchimp</span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(245,158,11,0.1);color:#F59E0B;border:1px solid rgba(245,158,11,0.2);">Klaviyo</span>
+          <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(245,158,11,0.1);color:#F59E0B;border:1px solid rgba(245,158,11,0.2);">ActiveCampaign</span>
+        </div>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="email.html" class="inline-flex items-center gap-1.5 text-sm font-semibold group" style="color:#F59E0B;">
+            Zjistit více
+            <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#kontakt" class="inline-flex items-center gap-1.5 text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">
+            Konzultace zdarma
+          </a>
+        </div>
       </article>
 
     </div>
@@ -627,7 +746,7 @@
           V marketingu je snadné se ztratit v buzzwordech. My jdeme jinou cestou. Každý návrh, každé doporučení a každá optimalizace vychází z dat. Ne z pocitů, ne z trendů.
         </p>
         <p class="text-slate-400 text-lg leading-relaxed mb-8">
-          Nezáleží na velikosti vašeho rozpočtu — záleží na tom, jestli chcete růst chytřeji.
+          Nezáleží na velikosti vašeho rozpočtu - záleží na tom, jestli chcete růst chytřeji.
         </p>
         <a href="#kontakt" class="btn-red inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm">
           Začněte bezplatnou konzultací
@@ -657,7 +776,7 @@
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <div><p class="font-semibold text-white text-sm">Bez zbytečných kecy</p><p class="text-slate-500 text-sm mt-0.5">Žádné „synergie" — jen jasné výsledky, které vidíte</p></div>
+          <div><p class="font-semibold text-white text-sm">Bez zbytečných kecy</p><p class="text-slate-500 text-sm mt-0.5">Žádné „synergie" - jen jasné výsledky, které vidíte</p></div>
         </div>
         <div class="flex gap-4 items-start p-5 glass rounded-xl">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);">
@@ -677,7 +796,7 @@
     <div class="reveal text-center max-w-2xl mx-auto mb-16">
       <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Proces</p>
       <h2 id="process-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">Jak spolupráce funguje</h2>
-      <p class="text-slate-400 text-lg">Od prvního kontaktu po měřitelné výsledky — čtyři kroky, které změní váš online marketing.</p>
+      <p class="text-slate-400 text-lg">Od prvního kontaktu po měřitelné výsledky - čtyři kroky, které změní váš online marketing.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -733,8 +852,8 @@
     <div class="lg:hidden">
       <div class="reveal text-center max-w-xl mx-auto mb-8">
         <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
-        <h2 id="reference-heading" class="text-4xl font-black text-white leading-tight mb-3">Projekty, na které jsme hrdí</h2>
-        <p class="text-slate-400">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.</p>
+        <h2 id="reference-heading" class="text-4xl font-black text-white leading-tight mb-3">Projekty, na které jsme <span class="grad">hrdí!</span></h2>
+        <p class="text-slate-400">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem - přinést výsledky.</p>
       </div>
 
       <div class="flex flex-col gap-3" id="mob-gallery">
@@ -758,8 +877,8 @@
 
       <div class="w-[340px] flex-shrink-0">
         <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
-        <h2 id="reference-heading-lg" class="text-5xl font-black text-white leading-tight mb-4">Projekty, na které jsme hrdí</h2>
-        <p class="text-slate-400 text-lg mb-8">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.</p>
+        <h2 id="reference-heading-lg" class="text-5xl font-black text-white leading-tight mb-4">Projekty, na které jsme <span class="grad">hrdí!</span></h2>
+        <p class="text-slate-400 text-lg mb-8">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem - přinést výsledky.</p>
         <a href="#kontakt" class="btn-red inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-base">
           Show all
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -841,7 +960,7 @@ if (mobBtn) {
     <div class="reveal flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-12">
       <div>
         <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Blog</p>
-        <h2 id="blog-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-3">Marketing, který<br>dává smysl</h2>
+        <h2 id="blog-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-3">Marketing, který<br><span class="grad">dává smysl!</span></h2>
         <p class="text-slate-400 text-lg max-w-lg">Týden co týden sdílíme novinky ze světa PPC, SEO, datové analytiky a AI.</p>
       </div>
       <a href="blog.html" class="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl glass text-slate-300 hover:text-white text-sm font-semibold transition-all hover:bg-white/10">
@@ -859,7 +978,7 @@ if (mobBtn) {
       <a href="blog.html" class="group glass-card rounded-2xl p-6 block hover:border-emerald/30">
         <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium mb-4" style="background:rgba(16,185,129,0.1);color:#10B981;">SEO</span>
         <h3 class="text-base font-bold text-white mb-2 group-hover:text-emerald transition-colors leading-snug">5 chyb v SEO, které vás stojí pozice na Googlu</h3>
-        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Nejčastější SEO chyby, které vidíme u českých firem — a jak je rychle opravit.</p>
+        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Nejčastější SEO chyby, které vidíme u českých firem - a jak je rychle opravit.</p>
         <span class="text-xs text-slate-600">4 min čtení</span>
       </a>
       <a href="blog.html" class="group glass-card rounded-2xl p-6 block hover:border-purple/30">
@@ -883,7 +1002,7 @@ if (mobBtn) {
       <div class="reveal">
         <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Kontakt</p>
         <h2 id="kontakt-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
-          Začněte růst.<br><span class="grad">Dnes.</span>
+          <span class="grad">Začněte růst!</span><br>Dnes.
         </h2>
         <p class="text-slate-400 text-lg leading-relaxed mb-10">
           Ozvěte se nám a společně vymyslíme, která kombinace služeb dává pro váš byznys největší smysl. První konzultace je zdarma a bez závazků.
@@ -974,10 +1093,11 @@ if (mobBtn) {
       <div>
         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Služby</p>
         <nav class="space-y-2.5">
-          <a href="#ppc" class="block text-sm text-slate-400 hover:text-white transition-colors">PPC kampaně</a>
-          <a href="#seo" class="block text-sm text-slate-400 hover:text-white transition-colors">SEO optimalizace</a>
-          <a href="#data" class="block text-sm text-slate-400 hover:text-white transition-colors">Datová analytika</a>
-          <a href="#ai-weby" class="block text-sm text-slate-400 hover:text-white transition-colors">Tvorba webů s AI</a>
+          <a href="ppc.html" class="block text-sm text-slate-400 hover:text-white transition-colors">PPC kampaně</a>
+          <a href="seo.html" class="block text-sm text-slate-400 hover:text-white transition-colors">SEO optimalizace</a>
+          <a href="analytics.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Datová analytika</a>
+          <a href="email.html" class="block text-sm text-slate-400 hover:text-white transition-colors">E-mail marketing</a>
+          <a href="ai-weby.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Tvorba webů s AI</a>
         </nav>
       </div>
     </div>

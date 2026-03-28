@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tvorba webů s AI - rychleji a chytřeji | ROVIMAX</title>
+  <meta name="description" content="Tvoříme weby s využitím AI - rychleji, s lepším UX a nižšími náklady. Nové weby, redesigny i landing pages s SEO strukturou připravenou od prvního dne.">
+
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0A0F1E">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="ROVIMAX">
+  <meta property="og:url" content="https://rovimax.cz/ai-weby.html">
+  <meta property="og:title" content="Tvorba webů s AI - rychleji a chytřeji | ROVIMAX">
+  <meta property="og:description" content="Tvoříme weby s využitím AI - rychleji, s lepším UX a nižšími náklady. Nové weby, redesigny i landing pages s SEO strukturou připravenou od prvního dne.">
+  <meta property="og:image" content="https://rovimax.cz/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tvorba webů s AI - rychleji a chytřeji | ROVIMAX">
+  <meta name="twitter:description" content="Tvoříme weby s využitím AI - rychleji, s lepším UX a nižšími náklady.">
+  <meta name="twitter:image" content="https://rovimax.cz/og-image.jpg">
+  <link rel="canonical" href="https://rovimax.cz/ai-weby.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0A0F1E', surface: '#111827', border: '#1F2937',
+            red: { DEFAULT: '#cb4154', hover: '#a8323f' },
+            teal: '#0EA5E9', purple: '#8B5CF6', emerald: '#10B981', amber: '#F59E0B',
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #0A0F1E; color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    #bg-blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; will-change: transform; filter: blur(100px); }
+    .blob-1 { width: 700px; height: 700px; top: -15%; left: -10%; background: radial-gradient(ellipse, rgba(139,92,246,0.14) 0%, transparent 70%); animation: blob-drift-a 22s ease-in-out infinite; }
+    .blob-2 { width: 600px; height: 600px; top: 20%; right: -5%; background: radial-gradient(ellipse, rgba(14,165,233,0.12) 0%, transparent 70%); animation: blob-drift-b 28s ease-in-out infinite; }
+    .blob-3 { width: 500px; height: 500px; bottom: 10%; left: 20%; background: radial-gradient(ellipse, rgba(139,92,246,0.09) 0%, transparent 70%); animation: blob-drift-c 20s ease-in-out infinite; }
+    .blob-4 { width: 400px; height: 400px; top: 55%; right: 25%; background: radial-gradient(ellipse, rgba(245,158,11,0.06) 0%, transparent 70%); animation: blob-drift-a 35s ease-in-out infinite reverse; }
+
+    @keyframes blob-drift-a { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(60px,-40px) scale(1.05)} 66%{transform:translate(-30px,50px) scale(0.97)} }
+    @keyframes blob-drift-b { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-50px,60px) scale(1.08)} 70%{transform:translate(40px,-30px) scale(0.95)} }
+    @keyframes blob-drift-c { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(70px,-50px) scale(1.06)} }
+
+    #starfield { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+    .star { position: absolute; border-radius: 50%; background: white; will-change: opacity; }
+    .page-content { position: relative; z-index: 2; }
+
+    @keyframes float { 0%,100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-20px) rotate(5deg)} }
+    @keyframes float-r { 0%,100%{transform:translateY(0px) rotate(45deg)} 50%{transform:translateY(-16px) rotate(52deg)} }
+    @keyframes float-s { 0%,100%{transform:translateY(0px)} 33%{transform:translateY(-28px)} 66%{transform:translateY(-8px)} }
+    @keyframes drift { 0%{transform:translate(0,0) rotate(0deg)} 25%{transform:translate(30px,-20px) rotate(10deg)} 50%{transform:translate(-10px,-35px) rotate(-5deg)} 75%{transform:translate(-25px,-15px) rotate(8deg)} 100%{transform:translate(0,0) rotate(0deg)} }
+
+    .fa{animation:float 7s ease-in-out infinite} .fb{animation:float-r 9s ease-in-out infinite} .fc{animation:float-s 6s ease-in-out infinite} .fd{animation:drift 14s ease-in-out infinite} .fe{animation:float 11s ease-in-out infinite reverse} .fg{animation:drift 18s ease-in-out infinite reverse}
+
+    .glass { background: rgba(17,24,39,0.45); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.06); }
+    .glass-strong { background: rgba(10,15,30,0.7); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(255,255,255,0.08); }
+    .glass-card { background: rgba(17,24,39,0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.07); transition: background 0.3s, border-color 0.3s, transform 0.35s ease, box-shadow 0.35s ease; }
+    .glass-card:hover { background: rgba(17,24,39,0.7); transform: translateY(-6px); box-shadow: 0 32px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08); }
+
+    .nav-glass { background: rgba(10,15,30,0.90) !important; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 8px 32px rgba(0,0,0,0.20); }
+
+    .btn-red { background: linear-gradient(135deg, #00fffa, #00c8c4); color: #000 !important; box-shadow: 0 0 20px rgba(0,255,250,0.35); transition: all 0.25s; }
+    .btn-red:hover { box-shadow: 0 0 40px rgba(0,255,250,0.6); transform: translateY(-2px); }
+
+    .grad { background: linear-gradient(135deg, #8B5CF6 0%, #0EA5E9 60%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .glow-blue  { box-shadow: 0 0 16px 4px rgba(14,165,233,0.7); }
+    .glow-purple{ box-shadow: 0 0 16px 4px rgba(139,92,246,0.7); }
+    .glow-green { box-shadow: 0 0 16px 4px rgba(16,185,129,0.7); }
+    .glow-amber { box-shadow: 0 0 16px 4px rgba(245,158,11,0.7); }
+
+    .orbit-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); pointer-events: none; }
+
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; z-index: 1; pointer-events: none; }
+
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #0A0F1E; } ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 3px; }
+    :focus-visible { outline: 2px solid #8B5CF6; outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) { .fa,.fb,.fc,.fd,.fe,.fg,.blob,.star{animation:none} .reveal{opacity:1;transform:none;transition:none} }
+    @media (max-width: 640px) { .blob-1{width:300px;height:300px} .blob-2{width:250px;height:250px} .blob-3{width:200px;height:200px} .blob-4{width:180px;height:180px} }
+
+    .platform-tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid rgba(139,92,246,0.3); background: rgba(139,92,246,0.08); color: #c4b5fd; }
+
+    .nav-dropdown { opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease; }
+    .nav-dropdown-trigger:hover .nav-dropdown,
+    .nav-dropdown-trigger:focus-within .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  </style>
+</head>
+<body class="antialiased">
+
+<div id="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div><div class="blob blob-2"></div>
+  <div class="blob blob-3"></div><div class="blob blob-4"></div>
+</div>
+<div id="starfield" aria-hidden="true"></div>
+
+<div class="page-content">
+
+<!-- ══════════════════════════════════════ NAVIGATION ══ -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" aria-label="Hlavní navigace">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="index.html" class="flex-shrink-0" aria-label="ROVIMAX - zpět na začátek">
+        <img src="logo-new.svg" alt="ROVIMAX" class="h-12 w-auto">
+      </a>
+      <div class="hidden lg:flex items-center gap-1" role="menubar">
+        <a href="index.html#jak-to-funguje" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Jak to funguje</a>
+        <a href="index.html#reference" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Naše práce</a>
+        <a href="blog.html" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Blog</a>
+        <div class="nav-dropdown-trigger relative" role="none">
+          <a href="index.html#sluzby" class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">
+            Služby
+            <svg class="opacity-50 mt-px" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
+          </a>
+          <div class="nav-dropdown absolute top-full left-0 pt-1 z-50">
+            <div class="glass-strong rounded-xl p-1.5 min-w-[200px]" style="border:1px solid rgba(255,255,255,0.1);">
+              <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                PPC kampaně
+              </a>
+              <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </div>
+                SEO optimalizace
+              </a>
+              <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                Datová analytika
+              </a>
+              <a href="email.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                </div>
+                E-mail marketing
+              </a>
+              <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-white bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
+                </div>
+                Tvorba webů s AI
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-dropdown-trigger relative" role="none">
+          <a href="#" class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">
+            Společnost
+            <svg class="opacity-50 mt-px" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
+          </a>
+          <div class="nav-dropdown absolute top-full left-0 pt-1 z-50">
+            <div class="glass-strong rounded-xl p-1.5 min-w-[160px]" style="border:1px solid rgba(255,255,255,0.1);">
+              <a href="index.html#kontakt" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                </div>
+                Kontakt
+              </a>
+              <a href="o-nas.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                O nás
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="index.html#kontakt" class="hidden sm:inline-flex btn-red items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold">Konzultace zdarma</a>
+        <button id="hamburger" class="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" aria-label="Otevřít menu" aria-expanded="false">
+          <div id="menu-toggle-icon" class="relative flex flex-col justify-between" style="width:20px;height:16px;">
+            <span id="bar-top" class="block rounded-full bg-current transition-all duration-250 origin-center" style="height:2px;width:100%;"></span>
+            <span id="bar-mid" class="block rounded-full bg-current transition-all duration-200" style="height:2px;width:100%;"></span>
+            <span id="bar-bot" class="block rounded-full bg-current transition-all duration-250 origin-center" style="height:2px;width:100%;"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/[0.06]" style="background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);">
+    <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col gap-1">
+      <a href="index.html#jak-to-funguje" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Jak to funguje</a>
+      <a href="index.html#reference" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Naše práce</a>
+      <a href="blog.html" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Blog</a>
+      <a href="index.html#sluzby" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Služby</a>
+      <div class="pl-4 space-y-0.5 -mt-1 mb-1">
+        <a href="ppc.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">PPC kampaně</a>
+        <a href="seo.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">SEO optimalizace</a>
+        <a href="analytics.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Datová analytika</a>
+        <a href="email.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">E-mail marketing</a>
+        <a href="ai-weby.html" class="block px-3 py-2 text-sm text-white bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Tvorba webů s AI</a>
+      </div>
+      <a href="#" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Společnost</a>
+      <div class="pl-4 space-y-0.5 -mt-1 mb-1">
+        <a href="index.html#kontakt" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Kontakt</a>
+        <a href="o-nas.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">O nás</a>
+      </div>
+      <a href="index.html#kontakt" class="mt-3 btn-red flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-semibold" onclick="closeMenu()">Konzultace zdarma</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════ HERO ══ -->
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16" aria-labelledby="hero-heading">
+
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+    <div class="orbit-ring" style="width:min(600px,80vw);height:min(600px,80vw);"></div>
+    <div class="orbit-ring" style="width:min(900px,120vw);height:min(900px,120vw);opacity:0.6;"></div>
+    <div class="orbit-ring" style="width:min(1200px,160vw);height:min(1200px,160vw);opacity:0.4;"></div>
+  </div>
+
+  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+    <div class="fa absolute top-28 right-[10%] w-5 h-5 rounded-full glow-purple opacity-90" style="background:#8B5CF6;"></div>
+    <div class="fc absolute top-52 right-[18%] w-3 h-3 rounded-full bg-teal glow-blue opacity-80" style="background:#0EA5E9;"></div>
+    <div class="fb absolute top-36 right-[6%] w-2.5 h-2.5 rounded-full glow-purple opacity-70" style="background:#8B5CF6;"></div>
+    <div class="fd absolute bottom-1/3 left-[6%] w-4 h-4 rounded-full glow-purple opacity-75" style="background:#8B5CF6;"></div>
+    <div class="fe absolute top-1/2 left-[12%] w-2 h-2 rounded-full glow-blue opacity-60" style="background:#0EA5E9;"></div>
+    <div class="fg absolute bottom-1/4 right-[22%] w-3 h-3 rounded-full glow-purple opacity-65" style="background:#8B5CF6;"></div>
+    <div class="fa absolute top-24 right-[14%] w-14 h-14 lg:w-20 lg:h-20 rounded-md opacity-60" style="background:linear-gradient(135deg,rgba(139,92,246,0.5),rgba(14,165,233,0.3));border:1px solid rgba(139,92,246,0.3);"></div>
+    <div class="fb absolute top-44 right-[5%] w-10 h-10 rounded-full opacity-40" style="background:linear-gradient(135deg,rgba(14,165,233,0.5),rgba(139,92,246,0.3));border:1px solid rgba(14,165,233,0.4);"></div>
+    <div class="fd absolute bottom-[30%] left-[8%] w-9 h-9 rounded-sm opacity-50" style="background:rgba(139,92,246,0.2);border:1px solid rgba(139,92,246,0.4);"></div>
+    <div class="fe absolute bottom-[22%] left-[20%] w-7 h-7 opacity-45 rotate-45" style="background:rgba(14,165,233,0.2);border:1px solid rgba(14,165,233,0.4);"></div>
+    <div class="fa absolute bottom-[35%] right-[16%] opacity-50" style="width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid rgba(139,92,246,0.7);filter:drop-shadow(0 0 8px rgba(139,92,246,0.8));"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-10 pb-12 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-36">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-white/60 mb-8" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);">
+        <span class="w-2 h-2 rounded-full" style="background:#8B5CF6;flex-shrink:0;"></span>
+        Tvorba webů s AI · Design · SEO · Konverze
+      </div>
+
+      <h1 id="hero-heading" class="text-[2rem] sm:text-[54px] lg:text-[5rem] font-black leading-[1.1] sm:leading-[1.04] tracking-tight mb-7">
+        Tvorba webů s AI -<br>
+        moderní web, který <span class="grad">skutečně prodává</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-10" style="text-shadow:0 0 40px rgba(0,0,0,0.8);">
+        Web není jen vizitka. Je to váš nejtvrdší pracovník - dostupný 24 hodin denně, 7 dní v týdnu. S využitím AI ho stavíme rychleji, s lepším UX a výsledkem, který konkurenci o krok předbíhá.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mb-12">
+        <a href="index.html#kontakt" class="btn-red inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base">
+          Chci bezplatnou konzultaci
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="#co-vytvorime" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base text-slate-300 glass hover:bg-white/10 hover:text-white transition-all">
+          Co pro vás vytvoříme
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+        </a>
+      </div>
+
+      <div class="pt-8 border-t border-white/5">
+        <p class="text-[11px] font-semibold text-slate-600 uppercase tracking-widest mb-4">Vlastnosti každého webu</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="platform-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2c2.76 2.76 4.5 6.58 4.5 10S14.76 19.24 12 22"/><path d="M12 2c-2.76 2.76-4.5 6.58-4.5 10S9.24 19.24 12 22"/><path d="M2 12h20"/></svg>
+            AI-powered
+          </span>
+          <span class="platform-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            SEO-ready
+          </span>
+          <span class="platform-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Responzivní
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
+    <span class="text-xs text-slate-500 uppercase tracking-widest">Scroll</span>
+    <div class="w-px h-10 bg-gradient-to-b from-slate-500 to-transparent"></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════ CO PRO VÁS VYTVOŘÍME ══ -->
+<section id="co-vytvorime" class="py-24 lg:py-36" aria-labelledby="co-vytvorime-heading">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="reveal mb-16 max-w-2xl">
+      <p class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:#8B5CF6;">Webová tvorba</p>
+      <h2 id="co-vytvorime-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+        Co pro vás vytvoříme
+      </h2>
+      <p class="text-slate-400 text-lg leading-relaxed">
+        Ať začínáte od nuly, nebo potřebujete dát starému webu nový život - pracujeme s AI v každé fázi projektu, od návrhu struktury po finální kód.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+
+      <div class="reveal space-y-4">
+        <div class="flex gap-4 items-start p-5 glass rounded-xl">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#8B5CF6" stroke-width="2.5"><polyline points="2 8 6 12 14 4"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-white text-sm mb-1">Nové weby na míru s SEO strukturou připravenou od prvního dne</p>
+            <p class="text-slate-500 text-sm">Stavíme od základu - architektura URL, nadpisová hierarchie, rychlost načítání. Vše správně hned napoprvé.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start p-5 glass rounded-xl">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#8B5CF6" stroke-width="2.5"><polyline points="2 8 6 12 14 4"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-white text-sm mb-1">Redesign stávajících webů s důrazem na výkon a konverze</p>
+            <p class="text-slate-500 text-sm">Zachováme to, co funguje, opravíme to, co brzdí. Výsledek: lepší čísla bez ztráty organické návštěvnosti.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start p-5 glass rounded-xl">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#8B5CF6" stroke-width="2.5"><polyline points="2 8 6 12 14 4"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-white text-sm mb-1">Landing pages pro PPC kampaně optimalizované na konverzní poměr</p>
+            <p class="text-slate-500 text-sm">Každá landing page vzniká s konkrétním cílem a konkrétním publikem na mysli - ne jako šablona.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start p-5 glass rounded-xl">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#8B5CF6" stroke-width="2.5"><polyline points="2 8 6 12 14 4"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-white text-sm mb-1">Responzivní design fungující na každém zařízení</p>
+            <p class="text-slate-500 text-sm">Telefon, tablet, desktop - web vypadá a funguje skvěle všude. Žádné kompromisy na mobilní verzi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal space-y-6">
+        <div class="glass-card rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 2c2.76 2.76 4.5 6.58 4.5 10S14.76 19.24 12 22"/><path d="M12 2c-2.76 2.76-4.5 6.58-4.5 10S9.24 19.24 12 22"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Proč volit web postavený s AI</h3>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li class="flex gap-2"><span style="color:#8B5CF6;" class="mt-0.5 flex-shrink-0">✓</span> Rychlejší dodání - týdny místo měsíců</li>
+            <li class="flex gap-2"><span style="color:#8B5CF6;" class="mt-0.5 flex-shrink-0">✓</span> Nižší náklady bez kompromisů na kvalitě</li>
+            <li class="flex gap-2"><span style="color:#8B5CF6;" class="mt-0.5 flex-shrink-0">✓</span> UX testovaný na základě dat, ne dojmů</li>
+            <li class="flex gap-2"><span style="color:#8B5CF6;" class="mt-0.5 flex-shrink-0">✓</span> SEO a výkon optimalizované od samého začátku</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-2xl" style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);">
+          <p class="text-sm font-semibold text-white mb-2">Připraveni probrat váš projekt?</p>
+          <p class="text-slate-400 text-sm mb-4">Na první konzultaci zdarma se podíváme na váš aktuální web a navrhneme konkrétní kroky ke zlepšení.</p>
+          <a href="index.html#kontakt" class="btn-red inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold">
+            Chci konzultaci zdarma
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ PROČ AI MĚNÍ ZPŮSOB ══ -->
+<section id="proc-ai" class="py-24 lg:py-36 relative overflow-hidden" aria-labelledby="proc-ai-heading">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="fa absolute top-10 right-10 w-48 h-48 rounded-full opacity-[0.03]" style="background:radial-gradient(circle,#8B5CF6,transparent);"></div>
+    <div class="fb absolute bottom-10 left-10 w-64 h-64 rounded-full opacity-[0.04]" style="background:radial-gradient(circle,#0EA5E9,transparent);"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+
+      <div class="reveal">
+        <p class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:#8B5CF6;">AI v praxi</p>
+        <h2 id="proc-ai-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
+          Proč AI mění způsob,<br><span class="grad">jakým weby vznikají</span>
+        </h2>
+        <div class="space-y-4 text-slate-400 text-lg leading-relaxed">
+          <p>
+            Klasický vývoj webu trvá týdny nebo měsíce. S AI zkracujeme čas od briefu po spuštění - bez kompromisů na kvalitě designu nebo kódu. Výsledkem je web, který vypadá a funguje lépe, za méně peněz a v kratším čase.
+          </p>
+          <p>
+            To není budoucnost. Takto děláme weby dnes.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="glass-card rounded-2xl p-8 lg:p-10" style="border-color:rgba(139,92,246,0.15);">
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white text-sm mb-1">Rychlost bez kompromisů</p>
+                <p class="text-slate-500 text-sm">AI urychluje návrh, generování kódu i testování - dodáme web rychleji, než byste čekali.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M2 20h20M4 20V10l8-7 8 7v10"/><path d="M9 20v-5h6v5"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white text-sm mb-1">Chytřejší design</p>
+                <p class="text-slate-500 text-sm">Testujeme více variant layoutu a UX řešení než klasický přístup - výsledek je ověřený, ne jen odhadnutý.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-white text-sm mb-1">Nižší náklady</p>
+                <p class="text-slate-500 text-sm">Efektivnější proces = nižší cena. Bez ztráty kvality kódu nebo designu, který by obstál i bez AI.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ DESIGN I VÝKON ══ -->
+<section id="design-vykon" class="py-24 lg:py-36" aria-labelledby="design-vykon-heading">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="reveal mb-14 max-w-2xl">
+      <p class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:#8B5CF6;">Tři pilíře každého webu</p>
+      <h2 id="design-vykon-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+        Design i výkon - ne jedno<br>na úkor druhého
+      </h2>
+      <p class="text-slate-400 text-lg leading-relaxed">
+        Hezký web, který se pomalu načítá a nikdo ho nenajde na Googlu, je k ničemu. Každý web stavíme tak, aby obstál na třech frontách najednou.
+      </p>
+    </div>
+
+    <div class="reveal flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0">
+
+      <!-- Card 1 -->
+      <div class="flex-1 glass-card rounded-2xl p-8 lg:rounded-r-none" style="border-color:rgba(139,92,246,0.15);">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);color:#c4b5fd;">1</div>
+          <p class="text-[#00fffa] text-xs font-semibold uppercase tracking-widest">Uživatelský zážitek</p>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">UX a design</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          AI nám pomáhá rychleji testovat layouty, hierarchii obsahu i vizuální styl - takže výsledný design není jen hezký, ale skutečně intuitivní pro uživatele.
+        </p>
+      </div>
+
+      <!-- Arrow desktop -->
+      <div class="hidden lg:flex items-center px-2 flex-shrink-0" style="background:rgba(17,24,39,0.5);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.5)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <!-- Arrow mobile -->
+      <div class="flex lg:hidden justify-center py-1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.4)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="flex-1 glass-card p-8 lg:rounded-none lg:border-l-0 lg:border-r-0" style="border-color:rgba(14,165,233,0.15);">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);color:#7dd3fc;">2</div>
+          <p class="text-[#00fffa] text-xs font-semibold uppercase tracking-widest">Technický výkon</p>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Výkon a rychlost</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Rychlost načítání přímo ovlivňuje konverzní poměr i pozice na Googlu. Každý web optimalizujeme na Core Web Vitals od samého začátku.
+        </p>
+      </div>
+
+      <!-- Arrow desktop -->
+      <div class="hidden lg:flex items-center px-2 flex-shrink-0" style="background:rgba(17,24,39,0.5);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.5)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <!-- Arrow mobile -->
+      <div class="flex lg:hidden justify-center py-1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.4)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flex-1 glass-card rounded-2xl p-8 lg:rounded-l-none" style="border-color:rgba(16,185,129,0.15);">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#6ee7b7;">3</div>
+          <p class="text-[#00fffa] text-xs font-semibold uppercase tracking-widest">Viditelnost</p>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">SEO od prvního dne</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Správná struktura URL, nadpisová hierarchie, meta tagy, interní prolinkování - vše nastavujeme ještě před spuštěním, ne dodatečně.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ LANDING PAGES ══ -->
+<section id="landing-pages" class="py-24 lg:py-36" aria-labelledby="landing-heading">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+
+      <div class="reveal">
+        <p class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:#8B5CF6;">PPC a konverze</p>
+        <h2 id="landing-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
+          Landing pages,<br><span class="grad">které konvertují</span>
+        </h2>
+        <div class="space-y-4 text-slate-400 text-lg leading-relaxed">
+          <p>
+            Každá PPC kampaň potřebuje cílovou stránku, která dovede návštěvníka ke konverzi. Tvoříme landing pages navržené přímo pro konkrétní kampaň, cílové publikum a požadovanou akci.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="index.html#kontakt" class="btn-red inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm">
+            Chci landing page
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="ppc.html" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm text-slate-400 glass hover:bg-white/10 hover:text-white transition-all">
+            Chcete i správu PPC kampaní?
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal space-y-4">
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p class="font-semibold text-white text-sm">Navrženo pro konkrétní kampaň</p>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">Každá landing page vychází ze struktury a cíle konkrétní PPC kampaně - ne z obecné šablony, která funguje průměrně všude.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><path d="M3 3v18h18"/><path d="m9 17 3-3.5 3.5 2.5 3.5-6"/></svg>
+            </div>
+            <p class="font-semibold text-white text-sm">A/B testování a optimalizace</p>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">Nasazujeme analytiku a testujeme varianty - konverzní poměr se zlepšuje průběžně, ne jen při spuštění.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p class="font-semibold text-white text-sm">Tracking a propojení s kampaněmi</p>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">GA4, Meta Pixel, Sklik tag - každá konverze je správně sledována, aby data z kampaní dávala smysl.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ BOTTOM CTA BANNER ══ -->
+<section class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center glass rounded-3xl px-8 py-16 lg:py-20">
+      <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-4">Připraveni začít?</p>
+      <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight mb-6">
+        Pojďme postavit web,<br><span class="grad">který skutečně prodává!</span>
+      </h2>
+      <p class="text-slate-400 text-lg max-w-xl mx-auto mb-10">
+        První konzultace je zdarma. Podíváme se na váš aktuální stav a navrhneme konkrétní kroky k lepšímu webu.
+      </p>
+      <a href="index.html#kontakt" class="btn-red inline-flex items-center gap-2.5 px-10 py-4 rounded-xl font-semibold text-base">
+        Chci bezplatnou konzultaci
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════ FOOTER ══ -->
+<footer class="glass-strong border-t border-white/5" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+      <div>
+        <img src="logo-new.svg" alt="ROVIMAX" class="h-[42px] w-auto mb-3">
+        <p class="text-slate-500 text-sm leading-relaxed">Online marketingová agentura. PPC · SEO · Data · AI</p>
+        <p class="text-slate-500 text-sm mt-2">Praha, Česká republika</p>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Navigace</p>
+        <nav class="space-y-2.5">
+          <a href="index.html#sluzby" class="block text-sm text-slate-400 hover:text-white transition-colors">Služby</a>
+          <a href="index.html#jak-to-funguje" class="block text-sm text-slate-400 hover:text-white transition-colors">Jak to funguje</a>
+          <a href="blog.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Blog</a>
+          <a href="index.html#kontakt" class="block text-sm text-slate-400 hover:text-white transition-colors">Kontakt</a>
+        </nav>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Služby</p>
+        <nav class="space-y-2.5">
+          <a href="ppc.html" class="block text-sm text-slate-400 hover:text-white transition-colors">PPC kampaně</a>
+          <a href="seo.html" class="block text-sm text-slate-400 hover:text-white transition-colors">SEO optimalizace</a>
+          <a href="analytics.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Datová analytika</a>
+          <a href="email.html" class="block text-sm text-slate-400 hover:text-white transition-colors">E-mail marketing</a>
+          <a href="ai-weby.html" class="block text-sm text-white transition-colors">Tvorba webů s AI</a>
+        </nav>
+      </div>
+    </div>
+    <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-slate-600 text-xs">© 2026 ROVIMAX. Všechna práva vyhrazena.</p>
+      <div class="flex gap-4">
+        <a href="#" class="text-slate-600 hover:text-slate-400 text-xs transition-colors">Ochrana osobních údajů</a>
+        <a href="#" class="text-slate-600 hover:text-slate-400 text-xs transition-colors">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById('starfield');
+  const count = Math.min(120, Math.floor(window.innerWidth * window.innerHeight / 8000));
+  const durations = [3,4,5,6,7,8,10,12];
+  const sheet = document.createElement('style');
+  let css = '';
+  for (let i = 0; i < count; i++) {
+    const size = Math.random() < 0.7 ? 1 : Math.random() < 0.8 ? 1.5 : 2;
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const dur = durations[Math.floor(Math.random() * durations.length)];
+    const delay = -(Math.random() * dur);
+    const minO = (0.05 + Math.random() * 0.1).toFixed(2);
+    const maxO = (parseFloat(minO) + 0.1 + Math.random() * 0.25).toFixed(2);
+    const aName = `tw${i}`;
+    css += `@keyframes ${aName}{0%,100%{opacity:${minO}}50%{opacity:${maxO}}}`;
+    const el = document.createElement('div');
+    el.className = 'star';
+    el.style.cssText = `width:${size}px;height:${size}px;left:${x}%;top:${y}%;animation:${aName} ${dur}s ${delay}s ease-in-out infinite;`;
+    container.appendChild(el);
+  }
+  const s = document.createElement('style');
+  s.textContent = css;
+  document.head.appendChild(s);
+})();
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('nav-glass', window.scrollY > 20);
+}, { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const barTop = document.getElementById('bar-top');
+const barMid = document.getElementById('bar-mid');
+const barBot = document.getElementById('bar-bot');
+let menuOpen = false;
+
+function openMenu() {
+  menuOpen = true;
+  mobileMenu.classList.remove('hidden');
+  hamburger.setAttribute('aria-expanded', 'true');
+  barTop.style.cssText = 'height:2px;width:100%;transform:translateY(7px) rotate(45deg);';
+  barMid.style.cssText = 'height:2px;width:100%;opacity:0;';
+  barBot.style.cssText = 'height:2px;width:100%;transform:translateY(-7px) rotate(-45deg);';
+}
+function closeMenu() {
+  menuOpen = false;
+  mobileMenu.classList.add('hidden');
+  hamburger.setAttribute('aria-expanded', 'false');
+  barTop.style.cssText = 'height:2px;width:100%;';
+  barMid.style.cssText = 'height:2px;width:100%;';
+  barBot.style.cssText = 'height:2px;width:100%;';
+}
+hamburger.addEventListener('click', () => { menuOpen ? closeMenu() : openMenu(); });
+
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>
