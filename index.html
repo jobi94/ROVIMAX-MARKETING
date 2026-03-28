@@ -772,7 +772,7 @@
         Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.
       </p>
       <a href="#kontakt" class="btn-red inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-base">
-        Chcete být dalším příkladem?
+        Show all
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
     </div>
@@ -866,12 +866,12 @@
   function activateMobile(index) {
     currentMobile = index;
     items.forEach(function (el, i) {
+      // Wipe ALL inline styles so the CSS media query has full control
+      el.style.cssText = 'transition: height 600ms cubic-bezier(.4,0,.2,1);';
+      el.querySelector('.ref-badge').style.cssText = '';
+      el.querySelector('.ref-label-active').style.cssText = '';
+      el.querySelector('.ref-label-inactive').style.cssText = '';
       el.classList.toggle('ref-v-active', i === index);
-      // clear inline styles so CSS takes over
-      el.style.width = '';
-      el.querySelector('.ref-badge').style.display = '';
-      el.querySelector('.ref-label-active').style.display = '';
-      el.querySelector('.ref-label-inactive').style.display = '';
     });
   }
 
