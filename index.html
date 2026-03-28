@@ -301,51 +301,20 @@
       .reveal { opacity: 1; transform: none; transition: none; }
     }
 
-    /* ── Reference accordion — phone + tablet: vertical accordion */
-    @media (max-width: 1023px) {
-      #ref-accordion {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        overflow-x: visible !important;
-        overflow-y: visible !important;
-        gap: 8px !important;
-        min-height: unset !important;
-      }
+    /* ── Desktop accordion sizing (CSS classes, no inline styles) */
+    .ref-item          { height: 480px; width: 60px; flex-shrink: 0; transition: width 600ms cubic-bezier(.4,0,.2,1); }
+    .ref-item.ref-active { width: 380px; }
+    .ref-item:not(.ref-active) .ref-label-active  { display: none; }
+    .ref-item:not(.ref-active) .ref-badge         { display: none; }
+    .ref-item.ref-active     .ref-label-inactive  { display: none; }
 
-      /* Collapsed strip */
-      .ref-item {
-        width: 100% !important;
-        height: 80px !important;
-        flex-shrink: 0 !important;
-        border-radius: 16px !important;
-        transition: height 600ms cubic-bezier(.4,0,.2,1) !important;
-      }
-
-      /* Expanded panel */
-      .ref-item.ref-v-active {
-        height: 360px !important;
-      }
-
-      /* Collapsed: hide rotated label, show horizontal title on the right */
-      .ref-item:not(.ref-v-active) .ref-label-inactive {
-        display: block !important;
-        bottom: auto !important;
-        left: auto !important;
-        transform: translateY(-50%) !important;
-        top: 50% !important;
-        right: 20px !important;
-        font-size: 15px !important;
-        color: rgba(255,255,255,0.9) !important;
-        white-space: nowrap;
-      }
-      .ref-item:not(.ref-v-active) .ref-label-active { display: none !important; }
-      .ref-item:not(.ref-v-active) .ref-badge        { display: none !important; }
-
-      /* Expanded: show normal bottom label + badge */
-      .ref-item.ref-v-active .ref-label-active   { display: block !important; }
-      .ref-item.ref-v-active .ref-label-inactive  { display: none !important; }
-      .ref-item.ref-v-active .ref-badge           { display: block !important; }
-    }
+    /* ── Mobile project cards */
+    .mob-card { display: block; position: relative; height: 160px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); text-decoration: none; }
+    .mob-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .mob-card .mob-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%); }
+    .mob-card .mob-text { position: absolute; bottom: 14px; left: 16px; }
+    .mob-card .mob-cat  { color: #00fffa; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
+    .mob-card .mob-title { color: #fff; font-size: 16px; font-weight: 900; }
 
     /* ── Blobs — scale down on mobile */
     @media (max-width: 640px) {
@@ -412,7 +381,7 @@
 
 
 <!-- ══════════════════════════════════════════ HERO ══ -->
-<section class="relative min-h-screen flex items-start overflow-hidden pt-16" aria-labelledby="hero-heading">
+<section class="relative lg:min-h-screen flex items-start overflow-hidden pt-16" aria-labelledby="hero-heading">
 
   <!-- Orbit rings -->
   <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
@@ -450,7 +419,7 @@
     <div class="fe absolute top-1/3 -right-32 w-[250px] h-[250px] rounded-full opacity-[0.04]" style="border: 1px solid white;"></div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-24 lg:pt-20 lg:pb-36">
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-10 pb-12 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-36">
     <div class="max-w-4xl">
 
       <!-- Badge -->
@@ -760,131 +729,108 @@
 <section id="reference" class="py-24 lg:py-36" aria-labelledby="reference-heading">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
-    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+    <!-- ── MOBILE view (hidden on lg+) ── -->
+    <div class="lg:hidden">
+      <div class="reveal text-center max-w-xl mx-auto mb-8">
+        <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
+        <h2 id="reference-heading" class="text-4xl font-black text-white leading-tight mb-3">Projekty, na které jsme hrdí</h2>
+        <p class="text-slate-400">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.</p>
+      </div>
 
-    <!-- Left: text -->
-    <div class="reveal w-full sm:max-w-sm lg:w-[340px] flex-shrink-0 text-center lg:text-left">
-      <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
-      <h2 id="reference-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
-        Projekty, na které jsme hrdí
-      </h2>
-      <p class="text-slate-400 text-lg mb-8">
-        Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.
-      </p>
-      <a href="#kontakt" class="btn-red inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-base">
-        Show all
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
+      <div class="flex flex-col gap-3" id="mob-gallery">
+        <a href="#" class="mob-card"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="PPC kampaně" loading="lazy"><div class="mob-overlay"></div><div class="mob-text"><div class="mob-cat">Google Ads · Sklik</div><div class="mob-title">PPC kampaně</div></div></a>
+        <a href="#" class="mob-card"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop" alt="SEO optimalizace" loading="lazy"><div class="mob-overlay"></div><div class="mob-text"><div class="mob-cat">Organický růst</div><div class="mob-title">SEO optimalizace</div></div></a>
+        <a href="#" class="mob-card"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop" alt="META reklama" loading="lazy"><div class="mob-overlay"></div><div class="mob-text"><div class="mob-cat">Facebook · Instagram</div><div class="mob-title">META reklama</div></div></a>
+        <a href="#" class="mob-card"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop" alt="Tvorba webů" loading="lazy"><div class="mob-overlay"></div><div class="mob-text"><div class="mob-cat">Design · Vývoj</div><div class="mob-title">Tvorba webů</div></div></a>
+        <a href="#" class="mob-card" id="mob-extra" style="display:none;"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Datová analytika" loading="lazy"><div class="mob-overlay"></div><div class="mob-text"><div class="mob-cat">GA4 · Looker Studio</div><div class="mob-title">Datová analytika</div></div></a>
+      </div>
+
+      <div class="text-center mt-6">
+        <button id="mob-show-all" class="btn-red inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm">
+          Show all
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Right: Accordion gallery -->
-    <div id="ref-accordion" class="reveal flex flex-row items-stretch justify-center gap-3 overflow-x-auto pb-4" style="min-height:480px;">
+    <!-- ── DESKTOP view (hidden below lg) ── -->
+    <div class="hidden lg:flex items-center justify-center gap-16">
 
-      <a href="#" data-ref="0" class="ref-item ref-active relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:380px;">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="PPC kampaně" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
-        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
-        <div class="ref-label-active absolute bottom-6 left-6 right-6">
-          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Google Ads · Sklik</p>
-          <h3 class="text-white font-black text-xl">PPC kampaně</h3>
-        </div>
-        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);display:none;">PPC kampaně</span>
-      </a>
+      <div class="w-[340px] flex-shrink-0">
+        <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
+        <h2 id="reference-heading-lg" class="text-5xl font-black text-white leading-tight mb-4">Projekty, na které jsme hrdí</h2>
+        <p class="text-slate-400 text-lg mb-8">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.</p>
+        <a href="#kontakt" class="btn-red inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-base">
+          Show all
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
 
-      <a href="#" data-ref="1" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
-        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop" alt="SEO optimalizace" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
-        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
-        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
-          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Organický růst</p>
-          <h3 class="text-white font-black text-xl">SEO optimalizace</h3>
-        </div>
-        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">SEO optimalizace</span>
-      </a>
+      <div id="ref-accordion" class="flex flex-row items-stretch gap-3">
+        <a href="#" class="ref-item ref-active relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="PPC kampaně" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
+          <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
+          <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Google Ads · Sklik</p><h3 class="text-white font-black text-xl">PPC kampaně</h3></div>
+          <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">PPC kampaně</span>
+        </a>
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop" alt="SEO optimalizace" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
+          <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
+          <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Organický růst</p><h3 class="text-white font-black text-xl">SEO optimalizace</h3></div>
+          <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">SEO optimalizace</span>
+        </a>
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop" alt="META reklama" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
+          <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
+          <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Facebook · Instagram</p><h3 class="text-white font-black text-xl">META reklama</h3></div>
+          <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">META reklama</span>
+        </a>
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2064&auto=format&fit=crop" alt="Tvorba webů" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
+          <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
+          <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Design · Vývoj</p><h3 class="text-white font-black text-xl">Tvorba webů</h3></div>
+          <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Tvorba webů</span>
+        </a>
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Datová analytika" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
+          <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
+          <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">GA4 · Looker Studio</p><h3 class="text-white font-black text-xl">Datová analytika</h3></div>
+          <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Datová analytika</span>
+        </a>
+      </div>
 
-      <a href="#" data-ref="2" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
-        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop" alt="META reklama" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
-        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
-        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
-          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Facebook · Instagram</p>
-          <h3 class="text-white font-black text-xl">META reklama</h3>
-        </div>
-        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">META reklama</span>
-      </a>
-
-      <a href="#" data-ref="3" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
-        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2064&auto=format&fit=crop" alt="Tvorba webů" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
-        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
-        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
-          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Design · Vývoj</p>
-          <h3 class="text-white font-black text-xl">Tvorba webů</h3>
-        </div>
-        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Tvorba webů</span>
-      </a>
-
-      <a href="#" data-ref="4" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Datová analytika" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
-        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
-        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
-          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">GA4 · Looker Studio</p>
-          <h3 class="text-white font-black text-xl">Datová analytika</h3>
-        </div>
-        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Datová analytika</span>
-      </a>
-
-    </div>
-
-    </div><!-- end flex row -->
+    </div><!-- end desktop -->
   </div>
 </section>
 
 <script>
+// Mobile "Show all"
+var mobExtra = document.getElementById('mob-extra');
+var mobBtn   = document.getElementById('mob-show-all');
+if (mobBtn) {
+  mobBtn.addEventListener('click', function () {
+    mobExtra.style.display = 'block';
+    mobBtn.style.display = 'none';
+  });
+}
+
+// Desktop accordion
 (function () {
   var items = document.querySelectorAll('#ref-accordion .ref-item');
   var current = 0;
-
-  function isMobile() { return window.innerWidth < 1024; }
-  var currentMobile = 0;
-
-  // Desktop hover accordion
-  function activate(index) {
-    if (index === current || isMobile()) return;
-    items.forEach(function (el, i) {
-      var isActive = i === index;
-      el.style.width = isActive ? '380px' : '60px';
-      el.querySelector('.ref-badge').style.display = isActive ? '' : 'none';
-      el.querySelector('.ref-label-active').style.display = isActive ? '' : 'none';
-      el.querySelector('.ref-label-inactive').style.display = isActive ? 'none' : '';
-    });
-    current = index;
+  function activate(i) {
+    if (i === current) return;
+    items[current].classList.remove('ref-active');
+    items[i].classList.add('ref-active');
+    current = i;
   }
-
-  // Mobile/tablet vertical accordion — tap to expand
-  function activateMobile(index) {
-    currentMobile = index;
-    items.forEach(function (el, i) {
-      // Wipe ALL inline styles so the CSS media query has full control
-      el.style.cssText = 'transition: height 600ms cubic-bezier(.4,0,.2,1);';
-      el.querySelector('.ref-badge').style.cssText = '';
-      el.querySelector('.ref-label-active').style.cssText = '';
-      el.querySelector('.ref-label-inactive').style.cssText = '';
-      el.classList.toggle('ref-v-active', i === index);
-    });
-  }
-
-  function initMobile() { activateMobile(0); }
-
-  if (isMobile()) initMobile();
-  window.addEventListener('resize', function () { if (isMobile()) initMobile(); });
-
   items.forEach(function (el, i) {
     el.addEventListener('mouseenter', function () { activate(i); });
-    el.addEventListener('click', function (e) {
-      if (isMobile()) { e.preventDefault(); activateMobile(i); }
-    });
   });
 })();
 </script>
