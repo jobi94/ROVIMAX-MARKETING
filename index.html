@@ -301,8 +301,36 @@
       .reveal { opacity: 1; transform: none; transition: none; }
     }
 
-    /* ── Reference accordion — mobile: vertical card grid */
-    @media (max-width: 1023px) {
+    /* ── Reference accordion — phone: horizontal swipe */
+    @media (max-width: 767px) {
+      #ref-accordion {
+        flex-direction: row !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px !important;
+        min-height: unset !important;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+      .ref-item {
+        width: 78vw !important;
+        min-width: 240px !important;
+        height: 300px !important;
+        flex-shrink: 0 !important;
+        scroll-snap-align: start;
+        border-radius: 16px !important;
+      }
+      .ref-label-inactive { display: none !important; }
+      .ref-label-active   { display: block !important; }
+      .ref-badge          { display: none !important; }
+    }
+
+    /* ── Reference accordion — tablet: vertical card stack */
+    @media (min-width: 768px) and (max-width: 1023px) {
       #ref-accordion {
         flex-direction: column !important;
         align-items: stretch !important;
@@ -312,7 +340,7 @@
       }
       .ref-item {
         width: 100% !important;
-        height: 180px !important;
+        height: 200px !important;
         border-radius: 16px !important;
       }
       .ref-label-inactive { display: none !important; }
@@ -821,6 +849,16 @@
 
   function isMobile() { return window.innerWidth < 1024; }
 
+  // On mobile/tablet — clear all inline display overrides so CSS media query takes full control
+  function resetForMobile() {
+    items.forEach(function (el) {
+      el.style.width = '';
+      el.querySelector('.ref-badge').style.display = '';
+      el.querySelector('.ref-label-active').style.display = '';
+      el.querySelector('.ref-label-inactive').style.display = '';
+    });
+  }
+
   function activate(index) {
     if (index === current || isMobile()) return;
     items.forEach(function (el, i) {
@@ -832,6 +870,9 @@
     });
     current = index;
   }
+
+  if (isMobile()) resetForMobile();
+  window.addEventListener('resize', function () { if (isMobile()) resetForMobile(); });
 
   items.forEach(function (el, i) {
     el.addEventListener('mouseenter', function () { activate(i); });
