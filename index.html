@@ -231,13 +231,13 @@
 
     /* ── Primary button */
     .btn-red {
-      background: linear-gradient(135deg, #cb4154, #a8323f);
-      color: #fff;
-      box-shadow: 0 0 20px rgba(203, 65, 84, 0.35);
+      background: linear-gradient(135deg, #00fffa, #00c8c4);
+      color: #000 !important;
+      box-shadow: 0 0 20px rgba(0, 255, 250, 0.35);
       transition: all 0.25s;
     }
     .btn-red:hover {
-      box-shadow: 0 0 40px rgba(203, 65, 84, 0.6);
+      box-shadow: 0 0 40px rgba(0, 255, 250, 0.6);
       transform: translateY(-2px);
     }
 
@@ -300,6 +300,33 @@
       .fa,.fb,.fc,.fd,.fe,.ff,.fg,.blob,.star { animation: none; }
       .reveal { opacity: 1; transform: none; transition: none; }
     }
+
+    /* ── Reference accordion — mobile: vertical card grid */
+    @media (max-width: 1023px) {
+      #ref-accordion {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        overflow-x: visible !important;
+        gap: 12px !important;
+        min-height: unset !important;
+      }
+      .ref-item {
+        width: 100% !important;
+        height: 180px !important;
+        border-radius: 16px !important;
+      }
+      .ref-label-inactive { display: none !important; }
+      .ref-label-active   { display: block !important; }
+      .ref-badge          { display: none !important; }
+    }
+
+    /* ── Blobs — scale down on mobile */
+    @media (max-width: 640px) {
+      .blob-1 { width: 300px; height: 300px; }
+      .blob-2 { width: 250px; height: 250px; }
+      .blob-3 { width: 200px; height: 200px; }
+      .blob-4 { width: 180px; height: 180px; }
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -323,11 +350,12 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href="#" class="flex-shrink-0" aria-label="ROVIMAX – zpět na začátek">
-        <img src="logo-new.svg" alt="ROVIMAX" class="h-10 w-auto">
+        <img src="logo-new.svg" alt="ROVIMAX" class="h-11 w-auto">
       </a>
       <div class="hidden lg:flex items-center gap-1" role="menubar">
         <a href="#sluzby" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Služby</a>
         <a href="#jak-to-funguje" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Jak to funguje</a>
+        <a href="#reference" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Naše práce</a>
         <a href="blog.html" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Blog</a>
         <a href="#kontakt" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Kontakt</a>
       </div>
@@ -347,6 +375,7 @@
     <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col gap-1">
       <a href="#sluzby" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Služby</a>
       <a href="#jak-to-funguje" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Jak to funguje</a>
+      <a href="#reference" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Naše práce</a>
       <a href="blog.html" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Blog</a>
       <a href="#kontakt" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Kontakt</a>
       <a href="#kontakt" class="mt-3 btn-red flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-semibold" onclick="closeMenu()">Konzultace zdarma</a>
@@ -360,9 +389,9 @@
 
   <!-- Orbit rings -->
   <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-    <div class="orbit-ring" style="width:600px;height:600px;"></div>
-    <div class="orbit-ring" style="width:900px;height:900px;opacity:0.6;"></div>
-    <div class="orbit-ring" style="width:1200px;height:1200px;opacity:0.4;"></div>
+    <div class="orbit-ring" style="width:min(600px,80vw);height:min(600px,80vw);"></div>
+    <div class="orbit-ring" style="width:min(900px,120vw);height:min(900px,120vw);opacity:0.6;"></div>
+    <div class="orbit-ring" style="width:min(1200px,160vw);height:min(1200px,160vw);opacity:0.4;"></div>
   </div>
 
   <!-- Floating geometric shapes -->
@@ -404,10 +433,10 @@
       </div>
 
       <!-- H1 -->
-      <h1 id="hero-heading" class="text-[2.5rem] sm:text-6xl lg:text-[5.5rem] font-black leading-[1.04] tracking-tight mb-7">
+      <h1 id="hero-heading" class="text-[2.2rem] sm:text-6xl lg:text-[5.5rem] font-black leading-[1.1] sm:leading-[1.04] tracking-tight mb-7">
         Online marketing,<br>
         který přináší<br>
-        <span class="grad">měřitelné výsledky</span>
+        <span class="grad">měřitelné výsledky<span style="font-size:0.96em;line-height:1;vertical-align:baseline;">!</span></span>
       </h1>
 
       <p class="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl mb-10" style="text-shadow: 0 0 40px rgba(0,0,0,0.8);">
@@ -592,7 +621,7 @@
     <div class="fb absolute bottom-10 left-10 w-64 h-64 rounded-full opacity-[0.04]" style="background: radial-gradient(circle, #0EA5E9, transparent);"></div>
   </div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
       <div class="reveal">
         <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Proč ROVIMAX</p>
         <h2 id="proc-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
@@ -657,7 +686,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="reveal glass-card rounded-2xl p-7 group hover:border-red/30">
-        <div class="text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(203,65,84,0.06);">01</div>
+        <div class="text-[48px] sm:text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(203,65,84,0.06);">01</div>
         <div class="w-11 h-11 rounded-full bg-red flex items-center justify-center mb-5" style="box-shadow: 0 0 24px rgba(203,65,84,0.4);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
@@ -665,7 +694,7 @@
         <p class="text-slate-400 text-sm leading-relaxed">Probereme vaše cíle, rozpočet a aktuální stav. Žádné závazky.</p>
       </div>
       <div class="reveal glass-card rounded-2xl p-7 group hover:border-teal/30" style="transition-delay:0.1s">
-        <div class="text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(14,165,233,0.06);">02</div>
+        <div class="text-[48px] sm:text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(14,165,233,0.06);">02</div>
         <div class="w-11 h-11 rounded-full bg-teal flex items-center justify-center mb-5" style="box-shadow: 0 0 24px rgba(14,165,233,0.4);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
@@ -673,7 +702,7 @@
         <p class="text-slate-400 text-sm leading-relaxed">Navrhneme plán, který sedí přesně na váš byznys a vaše čísla.</p>
       </div>
       <div class="reveal glass-card rounded-2xl p-7 group hover:border-purple/30" style="transition-delay:0.2s">
-        <div class="text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(139,92,246,0.06);">03</div>
+        <div class="text-[48px] sm:text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(139,92,246,0.06);">03</div>
         <div class="w-11 h-11 rounded-full bg-purple flex items-center justify-center mb-5" style="box-shadow: 0 0 24px rgba(139,92,246,0.4);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
@@ -681,7 +710,7 @@
         <p class="text-slate-400 text-sm leading-relaxed">Spustíme kampaně, sledujeme data a průběžně ladíme výkon.</p>
       </div>
       <div class="reveal glass-card rounded-2xl p-7 group hover:border-emerald/30" style="transition-delay:0.3s">
-        <div class="text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(16,185,129,0.06);">04</div>
+        <div class="text-[48px] sm:text-[72px] font-black leading-none mb-5 select-none" style="color:rgba(16,185,129,0.06);">04</div>
         <div class="w-11 h-11 rounded-full bg-emerald flex items-center justify-center mb-5" style="box-shadow: 0 0 24px rgba(16,185,129,0.4);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
@@ -699,6 +728,116 @@
   </div>
 </section>
 
+
+<!-- ═══════════════════════════ REFERENCE GALLERY ══ -->
+<section id="reference" class="py-24 lg:py-36" aria-labelledby="reference-heading">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+
+    <!-- Left: text -->
+    <div class="reveal w-full sm:max-w-sm lg:w-[340px] flex-shrink-0 text-center lg:text-left">
+      <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
+      <h2 id="reference-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+        Projekty, na které jsme hrdí
+      </h2>
+      <p class="text-slate-400 text-lg mb-8">
+        Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem — přinést výsledky.
+      </p>
+      <a href="#kontakt" class="btn-red inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-base">
+        Chcete být dalším příkladem?
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+    <!-- Right: Accordion gallery -->
+    <div id="ref-accordion" class="reveal flex flex-row items-stretch justify-center gap-3 overflow-x-auto pb-4" style="min-height:480px;">
+
+      <a href="#" data-ref="0" class="ref-item ref-active relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:380px;">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="PPC kampaně" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
+        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
+        <div class="ref-label-active absolute bottom-6 left-6 right-6">
+          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Google Ads · Sklik</p>
+          <h3 class="text-white font-black text-xl">PPC kampaně</h3>
+        </div>
+        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);display:none;">PPC kampaně</span>
+      </a>
+
+      <a href="#" data-ref="1" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop" alt="SEO optimalizace" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
+        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
+        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
+          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Organický růst</p>
+          <h3 class="text-white font-black text-xl">SEO optimalizace</h3>
+        </div>
+        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">SEO optimalizace</span>
+      </a>
+
+      <a href="#" data-ref="2" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop" alt="META reklama" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
+        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
+        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
+          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Facebook · Instagram</p>
+          <h3 class="text-white font-black text-xl">META reklama</h3>
+        </div>
+        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">META reklama</span>
+      </a>
+
+      <a href="#" data-ref="3" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
+        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2064&auto=format&fit=crop" alt="Tvorba webů" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
+        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
+        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
+          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Design · Vývoj</p>
+          <h3 class="text-white font-black text-xl">Tvorba webů</h3>
+        </div>
+        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Tvorba webů</span>
+      </a>
+
+      <a href="#" data-ref="4" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 border border-white/5 no-underline" style="transition:width 600ms cubic-bezier(.4,0,.2,1);height:480px;width:60px;">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Datová analytika" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 50%, transparent 100%);"></div>
+        <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);display:none;">Připravujeme</div>
+        <div class="ref-label-active absolute bottom-6 left-6 right-6" style="display:none;">
+          <p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">GA4 · Looker Studio</p>
+          <h3 class="text-white font-black text-xl">Datová analytika</h3>
+        </div>
+        <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Datová analytika</span>
+      </a>
+
+    </div>
+
+    </div><!-- end flex row -->
+  </div>
+</section>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('#ref-accordion .ref-item');
+  var current = 0;
+
+  function isMobile() { return window.innerWidth < 1024; }
+
+  function activate(index) {
+    if (index === current || isMobile()) return;
+    items.forEach(function (el, i) {
+      var isActive = i === index;
+      el.style.width = isActive ? '380px' : '60px';
+      el.querySelector('.ref-badge').style.display = isActive ? '' : 'none';
+      el.querySelector('.ref-label-active').style.display = isActive ? '' : 'none';
+      el.querySelector('.ref-label-inactive').style.display = isActive ? 'none' : '';
+    });
+    current = index;
+  }
+
+  items.forEach(function (el, i) {
+    el.addEventListener('mouseenter', function () { activate(i); });
+  });
+})();
+</script>
 
 <!-- ═══════════════════════════ BLOG TEASER ══ -->
 <section class="py-24 lg:py-35" aria-labelledby="blog-heading">
@@ -741,10 +880,10 @@
 <!-- ═══════════════════════════════════ CONTACT ══ -->
 <section id="kontakt" class="py-24 lg:py-36 relative overflow-hidden" aria-labelledby="kontakt-heading">
   <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red/30 to-transparent" aria-hidden="true"></div>
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style="background: radial-gradient(ellipse, rgba(203,65,84,0.04), transparent);" aria-hidden="true"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style="width:min(600px,90vw);height:min(300px,45vw);background: radial-gradient(ellipse, rgba(203,65,84,0.04), transparent);" aria-hidden="true"></div>
 
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
       <div class="reveal">
         <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Kontakt</p>
         <h2 id="kontakt-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
@@ -823,7 +962,7 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
       <div>
-        <img src="logo-new.svg" alt="ROVIMAX" class="h-9 w-auto mb-3">
+        <img src="logo-new.svg" alt="ROVIMAX" class="h-[42px] w-auto mb-3">
         <p class="text-slate-500 text-sm leading-relaxed">Online marketingová agentura. PPC · SEO · Data · AI</p>
         <p class="text-slate-500 text-sm mt-2">Praha, Česká republika</p>
       </div>
