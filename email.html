@@ -122,7 +122,6 @@
         <img src="logo-new.svg" alt="ROVIMAX" class="h-12 w-auto">
       </a>
       <div class="hidden lg:flex items-center gap-1" role="menubar">
-        <a href="index.html#jak-to-funguje" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Jak to funguje</a>
         <a href="index.html#reference" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Naše práce</a>
         <a href="blog.html" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Blog</a>
         <div class="nav-dropdown-trigger relative" role="none">
@@ -150,7 +149,7 @@
                 </div>
                 Datová analytika
               </a>
-              <a href="email.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-white bg-white/5 rounded-lg transition-colors">
+              <a href="email.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-white bg-white/5 rounded-lg">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
                 </div>
@@ -160,7 +159,7 @@
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
                 </div>
-                Tvorba webů s AI
+                Tvorba webů
               </a>
             </div>
           </div>
@@ -202,16 +201,43 @@
   </div>
   <div id="mobile-menu" class="hidden lg:hidden border-t border-white/[0.06]" style="background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);">
     <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col gap-1">
-      <a href="index.html#jak-to-funguje" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Jak to funguje</a>
       <a href="index.html#reference" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Naše práce</a>
       <a href="blog.html" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Blog</a>
-      <a href="index.html#sluzby" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Služby</a>
-      <div class="pl-4 space-y-0.5 -mt-1 mb-1">
-        <a href="ppc.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">PPC kampaně</a>
-        <a href="seo.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">SEO optimalizace</a>
-        <a href="analytics.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Datová analytika</a>
-        <a href="email.html" class="block px-3 py-2 text-sm text-white bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">E-mail marketing</a>
-        <a href="ai-weby.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Tvorba webů s AI</a>
+      <button onclick="toggleMobSluzby()" class="w-full flex items-center justify-between px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+        Služby
+        <svg id="mob-sluzby-chevron" class="transition-transform duration-200 opacity-50" width="14" height="14" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
+      </button>
+      <div id="mob-sluzby-panel" class="hidden pl-2 pb-1 space-y-0.5">
+        <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          PPC kampaně
+        </a>
+        <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          SEO optimalizace
+        </a>
+        <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          Datová analytika
+        </a>
+        <a href="email.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-white bg-white/5 rounded-lg" onclick="closeMenu()">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+          </div>
+          E-mail marketing
+        </a>
+        <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
+          </div>
+          Tvorba webů
+        </a>
       </div>
       <a href="#" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Společnost</a>
       <div class="pl-4 space-y-0.5 -mt-1 mb-1">
@@ -627,7 +653,7 @@
           <a href="seo.html" class="block text-sm text-slate-400 hover:text-white transition-colors">SEO optimalizace</a>
           <a href="analytics.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Datová analytika</a>
           <a href="email.html" class="block text-sm text-white transition-colors">E-mail marketing</a>
-          <a href="ai-weby.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Tvorba webů s AI</a>
+          <a href="ai-weby.html" class="block text-sm text-slate-400 hover:text-white transition-colors">Tvorba webů</a>
         </nav>
       </div>
     </div>
@@ -687,9 +713,23 @@ hamburger.addEventListener('click', () => {
   hamburger.setAttribute('aria-label', menuOpen ? 'Zavřít menu' : 'Otevřít menu');
 });
 function closeMenu() {
-  menuOpen = false; mobileMenu.classList.add('hidden'); setMenuIcon(false);
+  menuOpen = false;
+  mobileMenu.classList.add('hidden');
   hamburger.setAttribute('aria-expanded', 'false');
-  hamburger.setAttribute('aria-label', 'Otevřít menu');
+  barTop.style.cssText = 'height:2px;width:100%;';
+  barMid.style.cssText = 'height:2px;width:100%;';
+  barBot.style.cssText = 'height:2px;width:100%;';
+  const panel = document.getElementById('mob-sluzby-panel');
+  if (panel) panel.classList.add('hidden');
+  const chevron = document.getElementById('mob-sluzby-chevron');
+  if (chevron) chevron.style.transform = '';
+}
+
+function toggleMobSluzby() {
+  const panel = document.getElementById('mob-sluzby-panel');
+  const chevron = document.getElementById('mob-sluzby-chevron');
+  const isHidden = panel.classList.toggle('hidden');
+  chevron.style.transform = isHidden ? '' : 'rotate(180deg)';
 }
 document.addEventListener('click', e => { if (menuOpen && !nav.contains(e.target)) closeMenu(); });
 
