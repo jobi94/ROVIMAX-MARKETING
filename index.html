@@ -18,7 +18,7 @@
     content="Vysoce výkonný online marketing, PPC kampaně, datová analytika a tvorba webů s AI. Konzultace zdarma.">
 
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#323232">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="cs_CZ">
@@ -401,14 +401,14 @@
       width: 100% !important;
       margin: 0 !important;
       display: block;
-      background: #323232;
+      background: transparent;
       border-radius: 0;
       border: none;
       box-shadow: none;
     }
 
     .nav-glass {
-      background: #323232 !important;
+      background: transparent !important;
       border: none !important;
       box-shadow: none !important;
     }
@@ -425,12 +425,12 @@
 
       0%,
       100% {
-        transform: rotate(0deg) scale(1.00);
+        transform: scale(1.00);
         opacity: 0.80;
       }
 
       50% {
-        transform: rotate(180deg) scale(1.05);
+        transform: scale(1.05);
         opacity: 1.00;
       }
     }
@@ -439,12 +439,12 @@
 
       0%,
       100% {
-        transform: rotate(0deg) scale(1.00);
+        transform: scale(1.00);
         opacity: 0.75;
       }
 
       50% {
-        transform: rotate(180deg) scale(1.10);
+        transform: scale(1.10);
         opacity: 0.95;
       }
     }
@@ -453,12 +453,12 @@
 
       0%,
       100% {
-        transform: rotate(0deg) scale(1.00);
+        transform: scale(1.00);
         opacity: 0.60;
       }
 
       50% {
-        transform: rotate(180deg) scale(1.15);
+        transform: scale(1.15);
         opacity: 0.85;
       }
     }
@@ -811,7 +811,41 @@
   <div class="page-content">
 
     <!-- ══════════════════ DARK HERO ZONE (nav + hero share same bg) ══ -->
-    <div style="background:#323232;">
+    <div style="background:#323232;position:relative;">
+
+      <!-- ── BackgroundCircles — covers full dark zone incl. nav ── -->
+      <div id="bg-circles-layer" aria-hidden="true"
+        style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+
+        <!-- Animated grid -->
+        <div id="anim-grid"
+          style="position:absolute;inset:0;mask-image:radial-gradient(ellipse at center,transparent 30%,black);-webkit-mask-image:radial-gradient(ellipse at center,transparent 30%,black);">
+          <div
+            style="height:100%;width:100%;background-image:repeating-linear-gradient(100deg,#64748B 0%,#64748B 1px,transparent 1px,transparent 4%);opacity:0.12;">
+          </div>
+        </div>
+
+        <!-- 3 breathing border rings — centered -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="position:relative;width:480px;height:480px;">
+            <div class="breath-ring ring-0"></div>
+            <div class="breath-ring ring-1"></div>
+            <div class="breath-ring ring-2"></div>
+          </div>
+        </div>
+
+        <!-- Radial depth overlay — teal glow at center -->
+        <div
+          style="position:absolute;inset:0;mask-image:radial-gradient(90% 60% at 50% 50%,#000 40%,transparent);-webkit-mask-image:radial-gradient(90% 60% at 50% 50%,#000 40%,transparent);">
+          <div
+            style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,118,110,0.22) 0%,transparent 70%);filter:blur(120px);">
+          </div>
+          <div
+            style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,180,200,0.10) 0%,transparent 60%);filter:blur(80px);">
+          </div>
+        </div>
+
+      </div>
 
       <!-- ══════════════════════════════════════ NAVIGATION ══ -->
       <nav id="nav" class="transition-all duration-300" aria-label="Hlavní navigace">
@@ -1053,41 +1087,8 @@
 
       <!-- ══════════════════════════════════════════ HERO ══ -->
       <section id="hero-section" class="relative lg:min-h-screen flex items-center overflow-hidden"
-        style="background:#323232;" aria-labelledby="hero-heading">
+        style="background:transparent;" aria-labelledby="hero-heading">
 
-        <!-- ── BackgroundCircles component (translated from React/Framer Motion) ── -->
-        <div id="bg-circles-layer" aria-hidden="true"
-          style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
-
-          <!-- Animated grid -->
-          <div id="anim-grid"
-            style="position:absolute;inset:0;mask-image:radial-gradient(ellipse at center,transparent 30%,black);-webkit-mask-image:radial-gradient(ellipse at center,transparent 30%,black);">
-            <div
-              style="height:100%;width:100%;background-image:repeating-linear-gradient(100deg,#64748B 0%,#64748B 1px,transparent 1px,transparent 4%);opacity:0.12;">
-            </div>
-          </div>
-
-          <!-- 3 breathing border rings — centered -->
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <div style="position:relative;width:480px;height:480px;">
-              <div class="breath-ring ring-0"></div>
-              <div class="breath-ring ring-1"></div>
-              <div class="breath-ring ring-2"></div>
-            </div>
-          </div>
-
-          <!-- Radial depth overlay — teal glow at center -->
-          <div
-            style="position:absolute;inset:0;mask-image:radial-gradient(90% 60% at 50% 50%,#000 40%,transparent);-webkit-mask-image:radial-gradient(90% 60% at 50% 50%,#000 40%,transparent);">
-            <div
-              style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,118,110,0.22) 0%,transparent 70%);filter:blur(120px);">
-            </div>
-            <div
-              style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,180,200,0.10) 0%,transparent 60%);filter:blur(80px);">
-            </div>
-          </div>
-
-        </div>
 
 
         <!-- Hero text content — left -->
