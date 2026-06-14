@@ -16,7 +16,7 @@
   <meta name="description" content="Vysoce výkonný online marketing, PPC kampaně, datová analytika a tvorba webů s AI. Konzultace zdarma.">
 
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0A0F1E">
+  <meta name="theme-color" content="#ffffff">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="cs_CZ">
@@ -80,7 +80,7 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    body { background-color: #0A0F1E; color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    body { background-color: #EDEFF2; color: #111827; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
     /* ── CSS background blobs (replaces Three.js - GPU compositor only) */
     #bg-blobs {
@@ -99,25 +99,25 @@
     .blob-1 {
       width: 700px; height: 700px;
       top: -15%; left: -10%;
-      background: radial-gradient(ellipse, rgba(14,165,233,0.18) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(14,165,233,0.06) 0%, transparent 70%);
       animation: blob-drift-a 22s ease-in-out infinite;
     }
     .blob-2 {
       width: 600px; height: 600px;
       top: 20%; right: -5%;
-      background: radial-gradient(ellipse, rgba(139,92,246,0.16) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(139,92,246,0.05) 0%, transparent 70%);
       animation: blob-drift-b 28s ease-in-out infinite;
     }
     .blob-3 {
       width: 500px; height: 500px;
       bottom: 10%; left: 20%;
-      background: radial-gradient(ellipse, rgba(203,65,84,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(203,65,84,0.03) 0%, transparent 70%);
       animation: blob-drift-c 20s ease-in-out infinite;
     }
     .blob-4 {
       width: 400px; height: 400px;
       top: 55%; right: 25%;
-      background: radial-gradient(ellipse, rgba(16,185,129,0.09) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(16,185,129,0.03) 0%, transparent 70%);
       animation: blob-drift-a 35s ease-in-out infinite reverse;
     }
 
@@ -203,39 +203,99 @@
     .ff  { animation: float-r 8s ease-in-out infinite reverse; }
     .fg  { animation: drift  18s ease-in-out infinite reverse; }
 
-    /* ── Glass morphism */
+    /* ── Glass morphism → clean light cards */
     .glass {
-      background: rgba(17, 24, 39, 0.45);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     .glass-strong {
-      background: rgba(10, 15, 30, 0.7);
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-card {
-      background: rgba(17, 24, 39, 0.5);
+      background: #ffffff;
+      border: 1px solid rgba(255,255,255,0.10);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
       transition: background 0.3s, border-color 0.3s, transform 0.35s ease, box-shadow 0.35s ease;
     }
     .glass-card:hover {
-      background: rgba(17, 24, 39, 0.7);
-      transform: translateY(-6px);
-      box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.08);
+      background: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+      border-color: #d1d5db;
     }
 
-    /* ── Nav glass */
+    /* ── Nav — flat, seamless with hero */
+    #nav {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      width: 100% !important;
+      margin: 0 !important;
+      display: block;
+      background: #323232;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+    }
     .nav-glass {
-      background: rgba(10, 15, 30, 0.90) !important;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.20);
+      background: #323232 !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    #mobile-menu {
+      border-radius: 0;
+      background: #2a2a2a !important;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+
+    /* ── BackgroundCircles — breathing rings ── */
+    @keyframes breathe-0 {
+      0%,100% { transform:rotate(0deg)   scale(1.00); opacity:0.80; }
+      50%      { transform:rotate(180deg) scale(1.05); opacity:1.00; }
+    }
+    @keyframes breathe-1 {
+      0%,100% { transform:rotate(0deg)   scale(1.00); opacity:0.75; }
+      50%      { transform:rotate(180deg) scale(1.10); opacity:0.95; }
+    }
+    @keyframes breathe-2 {
+      0%,100% { transform:rotate(0deg)   scale(1.00); opacity:0.60; }
+      50%      { transform:rotate(180deg) scale(1.15); opacity:0.85; }
+    }
+    @keyframes grid-move {
+      0%   { background-position:0% 0%; }
+      100% { background-position:100% 100%; }
+    }
+    #anim-grid > div {
+      animation: grid-move 40s linear infinite;
+    }
+    .breath-ring {
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:2px solid;
+    }
+    /* Variant: senary (blue/cyan) — matches arrow LED palette */
+    .ring-0 {
+      border-color:rgba(0,160,220,0.60);
+      background:linear-gradient(135deg,rgba(0,160,220,0.18),transparent);
+      animation:breathe-0 5s ease-in-out infinite;
+    }
+    .ring-1 {
+      border-color:rgba(0,200,255,0.42);
+      background:linear-gradient(135deg,rgba(0,200,255,0.10),transparent);
+      animation:breathe-1 5s ease-in-out infinite;
+    }
+    .ring-2 {
+      border-color:rgba(100,116,139,0.22);
+      background:transparent;
+      animation:breathe-2 5s ease-in-out infinite;
     }
 
     /* ── Primary button */
@@ -249,6 +309,22 @@
       box-shadow: 0 0 40px rgba(0, 255, 250, 0.6);
       transform: translateY(-2px);
     }
+    /* ── Dark nav CTA (matches Increase "Sign up" style) */
+    .btn-dark {
+      background: #1a2b3b;
+      color: #ffffff !important;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      transition: all 0.25s;
+    }
+    .btn-dark:hover {
+      background: #243549;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transform: translateY(-1px);
+    }
+    /* ── Section label accent */
+    .section-label {
+      color: #111827;
+    }
 
     /* ── Gradient text */
     .grad { background: linear-gradient(135deg, #cb4154 0%, #8B5CF6 60%, #0EA5E9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -258,50 +334,41 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── Glow dots */
-    .glow-red   { box-shadow: 0 0 16px 4px rgba(203, 65, 84, 0.7); }
-    .glow-blue  { box-shadow: 0 0 16px 4px rgba(14, 165, 233, 0.7); }
-    .glow-purple{ box-shadow: 0 0 16px 4px rgba(139, 92, 246, 0.7); }
-    .glow-green { box-shadow: 0 0 16px 4px rgba(16, 185, 129, 0.7); }
+    .glow-red   { box-shadow: 0 0 10px 2px rgba(203, 65, 84, 0.3); }
+    .glow-blue  { box-shadow: 0 0 10px 2px rgba(14, 165, 233, 0.3); }
+    .glow-purple{ box-shadow: 0 0 10px 2px rgba(139, 92, 246, 0.3); }
+    .glow-green { box-shadow: 0 0 10px 2px rgba(16, 185, 129, 0.3); }
 
     /* ── Input fields */
     .field {
-      background: rgba(10, 15, 30, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #F8FAFC;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      color: #111827;
       border-radius: 12px;
       padding: 12px 16px;
       width: 100%;
       font-size: 14px;
       transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
-      backdrop-filter: blur(8px);
     }
-    .field::placeholder { color: #374151; }
+    .field::placeholder { color: #9ca3af; }
     .field:focus { border-color: rgba(203, 65, 84, 0.6); box-shadow: 0 0 0 3px rgba(203, 65, 84, 0.1); }
 
-    /* ── Orbit ring (hero decoration) */
-    .orbit-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      pointer-events: none;
-    }
+    /* ── Orbit ring (unused) */
 
-    /* ── Noise texture overlay */
+    /* ── Noise texture overlay — removed for light theme */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.025;
-      z-index: 1;
+      opacity: 0;
       pointer-events: none;
     }
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0A0F1E; }
-    ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: #f3f4f6; }
+    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
 
     :focus-visible { outline: 2px solid #E11D48; outline-offset: 3px; }
 
@@ -319,8 +386,9 @@
     #sluzby-tabs::-webkit-scrollbar { display: none; }
     #tab-indicator {
       position: absolute; top: 6px; bottom: 6px;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.14);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       border-radius: 10px;
       transition: left 0.32s cubic-bezier(0.34,1.26,0.64,1), width 0.32s cubic-bezier(0.34,1.26,0.64,1);
       pointer-events: none; z-index: 0;
@@ -339,7 +407,7 @@
     .ref-item.ref-active     .ref-label-inactive  { display: none; }
 
     /* ── Mobile project cards */
-    .mob-card { display: block; position: relative; height: 160px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); text-decoration: none; }
+    .mob-card { display: block; position: relative; height: 160px; border-radius: 16px; overflow: hidden; border: 1px solid #e5e7eb; text-decoration: none; }
     .mob-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .mob-card .mob-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%); }
     .mob-card .mob-text { position: absolute; bottom: 14px; left: 16px; }
@@ -371,48 +439,51 @@
 
 <div class="page-content">
 
+<!-- ══════════════════ DARK HERO ZONE (nav + hero share same bg) ══ -->
+<div style="background:#323232;">
+
 <!-- ══════════════════════════════════════ NAVIGATION ══ -->
-<nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" aria-label="Hlavní navigace">
+<nav id="nav" class="transition-all duration-300" aria-label="Hlavní navigace">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="flex items-center justify-between h-16 lg:h-20">
+    <div class="flex items-center justify-between h-13 lg:h-14">
       <a href="#" class="flex-shrink-0" aria-label="ROVIMAX - zpět na začátek">
-        <img src="logo-new.svg" alt="ROVIMAX" class="h-12 w-auto">
+        <img src="logo-new.svg" alt="ROVIMAX" class="h-10 w-auto" style="filter:brightness(0) invert(1);">
       </a>
       <div class="hidden lg:flex items-center gap-1" role="menubar">
-        <a href="#reference" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Naše práce</a>
-        <a href="blog.html" class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">Blog</a>
+        <a href="#reference" class="px-4 py-2 text-sm font-medium rounded-lg transition-colors" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.color='rgba(255,255,255,0.75)';this.style.background='transparent';" role="menuitem">Naše práce</a>
+        <a href="blog.html" class="px-4 py-2 text-sm font-medium rounded-lg transition-colors" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.color='rgba(255,255,255,0.75)';this.style.background='transparent';" role="menuitem">Blog</a>
         <div class="nav-dropdown-trigger relative" role="none">
-          <a href="#sluzby" class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">
+          <a href="#sluzby" class="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.color='rgba(255,255,255,0.75)';this.style.background='transparent';" role="menuitem">
             Služby
             <svg class="opacity-50 mt-px" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
           </a>
           <div class="nav-dropdown absolute top-full left-0 pt-1 z-50">
-            <div class="glass-strong rounded-xl p-1.5 min-w-[200px]" style="border:1px solid rgba(255,255,255,0.1);">
-              <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+            <div class="glass-strong rounded-xl p-1.5 min-w-[200px]" style="border:1px solid #e5e7eb;">
+              <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                 </div>
                 PPC kampaně
               </a>
-              <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+              <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                 </div>
                 SEO optimalizace
               </a>
-              <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+              <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 </div>
                 Datová analytika
               </a>
-              <a href="email.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+              <a href="email.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
                 </div>
                 E-mail marketing
               </a>
-              <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+              <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
                 </div>
@@ -422,19 +493,19 @@
           </div>
         </div>
         <div class="nav-dropdown-trigger relative" role="none">
-          <a href="#" class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" role="menuitem">
+          <a href="#" class="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.color='rgba(255,255,255,0.75)';this.style.background='transparent';" role="menuitem">
             Společnost
             <svg class="opacity-50 mt-px" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
           </a>
           <div class="nav-dropdown absolute top-full left-0 pt-1 z-50">
-            <div class="glass-strong rounded-xl p-1.5 min-w-[160px]" style="border:1px solid rgba(255,255,255,0.1);">
-              <a href="#kontakt" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+            <div class="glass-strong rounded-xl p-1.5 min-w-[160px]" style="border:1px solid #e5e7eb;">
+              <a href="#kontakt" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
                 </div>
                 Kontakt
               </a>
-              <a href="o-nas.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+              <a href="o-nas.html" class="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
                 <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
                 </div>
@@ -445,8 +516,8 @@
         </div>
       </div>
       <div class="flex items-center gap-3">
-        <a href="#kontakt" class="hidden sm:inline-flex btn-red items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold">Konzultace zdarma</a>
-        <button id="hamburger" class="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" aria-label="Otevřít menu" aria-expanded="false">
+        <a href="#kontakt" class="hidden sm:inline-flex btn-dark items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-semibold">Konzultace zdarma</a>
+        <button id="hamburger" class="lg:hidden p-2 rounded-lg transition-colors" style="color:rgba(255,255,255,0.8);" aria-label="Otevřít menu" aria-expanded="false">
           <div id="menu-toggle-icon" class="relative flex flex-col justify-between" style="width:20px;height:16px;">
             <span id="bar-top"    class="block rounded-full bg-current transition-all duration-250 origin-center" style="height:2px;width:100%;"></span>
             <span id="bar-mid"    class="block rounded-full bg-current transition-all duration-200"               style="height:2px;width:100%;"></span>
@@ -456,166 +527,128 @@
       </div>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/[0.06]" style="background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);">
+  <div id="mobile-menu" class="hidden lg:hidden" style="background:#ffffff;border-top:1px solid #e5e7eb;">
     <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col gap-1">
-      <a href="#reference" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Naše práce</a>
-      <a href="blog.html" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Blog</a>
-      <button onclick="toggleMobSluzby()" class="w-full flex items-center justify-between px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+      <a href="#reference" class="px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">Naše práce</a>
+      <a href="blog.html" class="px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">Blog</a>
+      <button onclick="toggleMobSluzby()" class="w-full flex items-center justify-between px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
         Služby
         <svg id="mob-sluzby-chevron" class="transition-transform duration-200 opacity-50" width="14" height="14" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3.5l3 3 3-3"/></svg>
       </button>
       <div id="mob-sluzby-panel" class="hidden pl-2 pb-1 space-y-0.5">
-        <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+        <a href="ppc.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">
           <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.12);border:1px solid rgba(203,65,84,0.2);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
           PPC kampaně
         </a>
-        <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+        <a href="seo.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">
           <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </div>
           SEO optimalizace
         </a>
-        <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+        <a href="analytics.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">
           <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.2);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           </div>
           Datová analytika
         </a>
-        <a href="email.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+        <a href="email.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">
           <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
           </div>
           E-mail marketing
         </a>
-        <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">
+        <a href="ai-weby.html" class="flex items-center gap-2.5 px-3 py-2.5 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">
           <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
           </div>
           Tvorba webů
         </a>
       </div>
-      <a href="#" class="px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Společnost</a>
+      <a href="#" class="px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">Společnost</a>
       <div class="pl-4 space-y-0.5 -mt-1 mb-1">
-        <a href="#kontakt" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">Kontakt</a>
-        <a href="o-nas.html" class="block px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onclick="closeMenu()">O nás</a>
+        <a href="#kontakt" class="block px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">Kontakt</a>
+        <a href="o-nas.html" class="block px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors" onclick="closeMenu()">O nás</a>
       </div>
-      <a href="#kontakt" class="mt-3 btn-red flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-semibold" onclick="closeMenu()">Konzultace zdarma</a>
+      <a href="#kontakt" class="mt-3 btn-dark flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-semibold" onclick="closeMenu()">Konzultace zdarma</a>
     </div>
   </div>
 </nav>
 
 
 <!-- ══════════════════════════════════════════ HERO ══ -->
-<section class="relative lg:min-h-screen flex items-start overflow-hidden pt-16" aria-labelledby="hero-heading">
+<section id="hero-section" class="relative lg:min-h-screen flex items-start overflow-hidden" style="background:#323232;" aria-labelledby="hero-heading">
 
-  <!-- Orbit rings -->
-  <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-    <div class="orbit-ring" style="width:min(600px,80vw);height:min(600px,80vw);"></div>
-    <div class="orbit-ring" style="width:min(900px,120vw);height:min(900px,120vw);opacity:0.6;"></div>
-    <div class="orbit-ring" style="width:min(1200px,160vw);height:min(1200px,160vw);opacity:0.4;"></div>
+  <!-- ── BackgroundCircles component (translated from React/Framer Motion) ── -->
+  <div id="bg-circles-layer" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+
+    <!-- Animated grid -->
+    <div id="anim-grid" style="position:absolute;inset:0;mask-image:radial-gradient(ellipse at center,transparent 30%,black);-webkit-mask-image:radial-gradient(ellipse at center,transparent 30%,black);">
+      <div style="height:100%;width:100%;background-image:repeating-linear-gradient(100deg,#64748B 0%,#64748B 1px,transparent 1px,transparent 4%);opacity:0.12;"></div>
+    </div>
+
+    <!-- 3 breathing border rings — centered -->
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style="position:relative;width:480px;height:480px;">
+        <div class="breath-ring ring-0"></div>
+        <div class="breath-ring ring-1"></div>
+        <div class="breath-ring ring-2"></div>
+      </div>
+    </div>
+
+    <!-- Radial depth overlay — teal glow at center -->
+    <div style="position:absolute;inset:0;mask-image:radial-gradient(90% 60% at 50% 50%,#000 40%,transparent);-webkit-mask-image:radial-gradient(90% 60% at 50% 50%,#000 40%,transparent);">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,118,110,0.22) 0%,transparent 70%);filter:blur(120px);"></div>
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,180,200,0.10) 0%,transparent 60%);filter:blur(80px);"></div>
+    </div>
+
   </div>
 
-  <!-- Floating geometric shapes -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
-    <!-- Glowing spheres -->
-    <div class="fa absolute top-28 right-[10%] w-5 h-5 rounded-full bg-red glow-red opacity-90"></div>
-    <div class="fc absolute top-52 right-[18%] w-3 h-3 rounded-full bg-teal glow-blue opacity-80"></div>
-    <div class="fb absolute top-36 right-[6%] w-2.5 h-2.5 rounded-full bg-purple glow-purple opacity-70"></div>
-    <div class="fd absolute bottom-1/3 left-[6%] w-4 h-4 rounded-full bg-emerald glow-green opacity-75"></div>
-    <div class="fe absolute top-1/2 left-[12%] w-2 h-2 rounded-full bg-red glow-red opacity-60"></div>
-    <div class="fg absolute bottom-1/4 right-[22%] w-3 h-3 rounded-full bg-teal glow-blue opacity-65"></div>
-    <div class="fc absolute top-3/4 left-[30%] w-2 h-2 rounded-full bg-purple glow-purple opacity-55"></div>
 
-    <!-- Geometric shapes -->
-    <div class="fa absolute top-24 right-[14%] w-14 h-14 lg:w-20 lg:h-20 rounded-md opacity-60" style="background: linear-gradient(135deg, rgba(203,65,84,0.6), rgba(139,92,246,0.3)); border: 1px solid rgba(203,65,84,0.3);"></div>
-    <div class="fb absolute top-44 right-[5%] w-10 h-10 rounded-full opacity-40" style="background: linear-gradient(135deg, rgba(14,165,233,0.5), rgba(139,92,246,0.3)); border: 1px solid rgba(14,165,233,0.4);"></div>
-    <div class="fd absolute bottom-[30%] left-[8%] w-9 h-9 rounded-sm opacity-50" style="background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4);"></div>
-    <div class="fe absolute bottom-[22%] left-[20%] w-7 h-7 opacity-45 rotate-45" style="background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.4);"></div>
-    <div class="fc absolute top-[15%] left-[5%] w-6 h-6 rounded-full opacity-35" style="border: 1px solid rgba(139,92,246,0.6);"></div>
-    <div class="fg absolute top-[60%] right-[8%] w-8 h-8 opacity-40" style="border: 1px solid rgba(14,165,233,0.5); border-radius: 2px;"></div>
-
-    <!-- Triangle -->
-    <div class="fa absolute bottom-[35%] right-[16%] opacity-50" style="width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid rgba(139,92,246,0.7);filter:drop-shadow(0 0 8px rgba(139,92,246,0.8));"></div>
-    <div class="fc absolute top-[40%] right-[25%] opacity-35" style="width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:16px solid rgba(14,165,233,0.6);"></div>
-
-    <!-- Big outline circles (parallax targets) -->
-    <div class="fc absolute -top-20 -right-20 w-[500px] h-[500px] rounded-full opacity-[0.04]" style="border: 1px solid white;" data-parallax="0.02"></div>
-    <div class="fd absolute -bottom-10 -left-10 w-[350px] h-[350px] rounded-full opacity-[0.05]" style="border: 1px solid white;"></div>
-    <div class="fe absolute top-1/3 -right-32 w-[250px] h-[250px] rounded-full opacity-[0.04]" style="border: 1px solid white;"></div>
-  </div>
-
-  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-8 sm:pt-12 sm:pb-14 lg:pt-16 lg:pb-24">
-    <div class="max-w-4xl">
-
+  <!-- Hero text content — left -->
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-8 sm:pt-12 sm:pb-14 lg:pt-20 lg:pb-28 w-full" style="z-index:3;">
+    <div style="max-width:780px;">
       <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-white/60 mb-8" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium mb-8" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.55);">
         <span class="w-2 h-2 rounded-full" style="background:#10B981;flex-shrink:0;"></span>
         Online marketing · PPC · SEO · Data · AI
       </div>
 
       <!-- H1 -->
-      <h1 id="hero-heading" class="text-[2.6rem] sm:text-[54px] lg:text-[5rem] font-black leading-[1.1] sm:leading-[1.04] tracking-tight mb-7">
+      <h1 id="hero-heading" class="text-[2.6rem] sm:text-[3.6rem] lg:text-[5.2rem] font-black leading-[1.08] tracking-tight mb-7 text-white">
         Online marketing,<br>
-        který přináší<br>
-        <span class="grad">měřitelné výsledky<span style="font-size:0.96em;line-height:1;vertical-align:baseline;">!</span></span>
+        který rozdmíchá<br>
+        <span class="grad">Váš business<span style="font-size:0.96em;line-height:1;vertical-align:baseline;">!</span></span>
       </h1>
 
-      <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-10" style="text-shadow: 0 0 40px rgba(0,0,0,0.8);">
-        Strategie postavená na datech, automatizaci a technologiích, které váš byznys posunou tam, kde ho potřebujete mít!
+      <p class="text-base sm:text-lg leading-relaxed" style="color:rgba(255,255,255,0.50);max-width:520px;">
+        Strategie postavená na datech a technologiích, které Vaše zákazníky posunou tam, kde je potřebujete mít!
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 mb-16">
-        <a href="#kontakt" class="btn-red inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base">
-          Chci bezplatnou konzultaci
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <a href="#sluzby" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base text-slate-300 glass hover:bg-white/10 hover:text-white transition-all">
-          Naše služby
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
-        </a>
-      </div>
-
-      <!-- Platform strip -->
-      <div class="pt-8 border-t border-white/5">
-        <p class="text-[11px] font-semibold text-slate-600 uppercase tracking-widest mb-4">Pracujeme s platformami</p>
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <span class="text-slate-500 text-sm font-semibold hover:text-slate-300 transition-colors cursor-default">Google Ads</span>
-          <span class="text-slate-700">·</span>
-          <span class="text-slate-500 text-sm font-semibold hover:text-slate-300 transition-colors cursor-default">Sklik</span>
-          <span class="text-slate-700">·</span>
-          <span class="text-slate-500 text-sm font-semibold hover:text-slate-300 transition-colors cursor-default">Meta Ads</span>
-          <span class="text-slate-700">·</span>
-          <span class="text-slate-500 text-sm font-semibold hover:text-slate-300 transition-colors cursor-default">GA4</span>
-          <span class="text-slate-700">·</span>
-          <span class="text-slate-500 text-sm font-semibold hover:text-slate-300 transition-colors cursor-default">Looker Studio</span>
-          <span class="text-slate-700">·</span>
-          <span class="text-slate-500 text-sm font-semibold hover:text-slate-300 transition-colors cursor-default">Power BI</span>
-        </div>
-      </div>
-
     </div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
-    <span class="text-xs text-slate-500 uppercase tracking-widest">Scroll</span>
-    <div class="w-px h-10 bg-gradient-to-b from-slate-500 to-transparent"></div>
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" aria-hidden="true" style="z-index:3;opacity:0.35;">
+    <span class="text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.7);">Scroll</span>
+    <div class="w-px h-10 bg-gradient-to-b from-white to-transparent"></div>
   </div>
 </section>
 
 
+</div><!-- /dark hero zone -->
+
 <!-- ════════════════════════════════════ SERVICES ══ -->
-<section id="sluzby" class="py-14 lg:py-24" aria-labelledby="sluzby-heading">
+<section id="sluzby" class="py-14 lg:py-24" style="background:#DCDEE3;" aria-labelledby="sluzby-heading">
   <div class="max-w-5xl mx-auto px-5 sm:px-8">
 
     <div class="reveal mb-16 max-w-2xl">
-      <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Naše služby</p>
-      <h2 id="sluzby-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+      <p class="section-label text-xs font-bold uppercase tracking-widest mb-3">Naše služby</p>
+      <h2 id="sluzby-heading" class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-4">
         Pomůžeme Vám vytvořit <span class="grad">BRAND IDENTITU!</span>
       </h2>
-      <p class="text-slate-400 text-lg">
+      <p class="text-gray-600 text-lg">
         Každý projekt začíná analýzou. Každá kampaň končí výsledky, které vidíte v reálném čase. Pracujeme s Google Ads, Sklik, Meta Ads a dalšími platformami - vždycky s cílem maximální návratnosti vaší investice.
       </p>
     </div>
@@ -625,38 +658,38 @@
 
       <!-- Tab nav bar -->
       <div class="relative mb-4">
-        <div id="sluzby-tabs" class="relative flex gap-0.5 p-1.5 rounded-2xl overflow-x-auto" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+        <div id="sluzby-tabs" class="relative flex gap-0.5 p-1.5 rounded-2xl overflow-x-auto" style="background:#f3f4f6;border:1px solid #e5e7eb;">
           <div id="tab-indicator"></div>
 
-          <button data-tab="ppc" class="sluzby-tab active-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-white transition-colors" onclick="switchSluzbyTab('ppc',this)">
+          <button data-tab="ppc" class="sluzby-tab active-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-gray-900 transition-colors" onclick="switchSluzbyTab('ppc',this)">
             <div class="w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center" style="background:rgba(203,65,84,0.25);">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2.5" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
             </div>
             PPC kampaně
           </button>
 
-          <button data-tab="seo" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-slate-400 transition-colors" onclick="switchSluzbyTab('seo',this)">
+          <button data-tab="seo" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-gray-500 transition-colors" onclick="switchSluzbyTab('seo',this)">
             <div class="w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center" style="background:rgba(16,185,129,0.18);">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </div>
             SEO
           </button>
 
-          <button data-tab="analytika" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-slate-400 transition-colors" onclick="switchSluzbyTab('analytika',this)">
+          <button data-tab="analytika" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-gray-500 transition-colors" onclick="switchSluzbyTab('analytika',this)">
             <div class="w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center" style="background:rgba(14,165,233,0.18);">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             </div>
             Analytika
           </button>
 
-          <button data-tab="email" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-slate-400 transition-colors" onclick="switchSluzbyTab('email',this)">
+          <button data-tab="email" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-gray-500 transition-colors" onclick="switchSluzbyTab('email',this)">
             <div class="w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center" style="background:rgba(245,158,11,0.18);">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
             </div>
             E-mail
           </button>
 
-          <button data-tab="ai" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-slate-400 transition-colors" onclick="switchSluzbyTab('ai',this)">
+          <button data-tab="ai" class="sluzby-tab relative z-10 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 text-gray-500 transition-colors" onclick="switchSluzbyTab('ai',this)">
             <div class="w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center" style="background:rgba(139,92,246,0.18);">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
             </div>
@@ -675,11 +708,11 @@
               <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(203,65,84,0.1);border:1px solid rgba(203,65,84,0.2);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">PPC kampaně na Google, Sklik a Meta</h3>
-              <p class="text-slate-400 leading-relaxed">Spravujeme PPC kampaně, které nepálí rozpočet do prázdna. Každá koruna je nasměrovaná tak, aby přinesla maximum kliků, konverzí a tržeb.</p>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">PPC kampaně na Google, Sklik a Meta</h3>
+              <p class="text-gray-600 leading-relaxed">Spravujeme PPC kampaně, které nepálí rozpočet do prázdna. Každá koruna je nasměrovaná tak, aby přinesla maximum kliků, konverzí a tržeb.</p>
             </div>
             <div>
-              <ul class="space-y-2.5 mb-6 text-sm text-slate-400">
+              <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
                 <li class="flex gap-2"><span class="text-red mt-0.5 flex-shrink-0">✓</span> Komplexní správu kampaní na Google, Seznamu i sociálních sítích</li>
                 <li class="flex gap-2"><span class="text-red mt-0.5 flex-shrink-0">✓</span> Výzkum klíčových slov a cílových skupin</li>
                 <li class="flex gap-2"><span class="text-red mt-0.5 flex-shrink-0">✓</span> Tvorbu a testování reklamních sestav a kreativ</li>
@@ -692,7 +725,7 @@
               </div>
               <div class="flex flex-wrap gap-4 items-center">
                 <a href="ppc.html" class="inline-flex items-center gap-1.5 text-red text-sm font-semibold group">Zjistit více <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-                <a href="#kontakt" class="text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">Konzultace zdarma</a>
+                <a href="#kontakt" class="text-gray-500 text-sm font-medium hover:text-gray-700 transition-colors">Konzultace zdarma</a>
               </div>
             </div>
           </div>
@@ -705,11 +738,11 @@
               <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">SEO optimalizace - buďte viditelní na Googlu</h3>
-              <p class="text-slate-400 leading-relaxed">Organická návštěvnost je dlouhodobě nejlevnější zdroj zákazníků. Technické audity, on-page úpravy, obsahová strategie i link building.</p>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">SEO optimalizace - buďte viditelní na Googlu</h3>
+              <p class="text-gray-600 leading-relaxed">Organická návštěvnost je dlouhodobě nejlevnější zdroj zákazníků. Technické audity, on-page úpravy, obsahová strategie i link building.</p>
             </div>
             <div>
-              <ul class="space-y-2.5 mb-6 text-sm text-slate-400">
+              <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
                 <li class="flex gap-2"><span class="text-emerald mt-0.5 flex-shrink-0">✓</span> Technický SEO audit a opravy</li>
                 <li class="flex gap-2"><span class="text-emerald mt-0.5 flex-shrink-0">✓</span> Keyword research a obsahová strategie</li>
                 <li class="flex gap-2"><span class="text-emerald mt-0.5 flex-shrink-0">✓</span> On-page optimalizaci (meta tagy, struktura, interní linky)</li>
@@ -722,7 +755,7 @@
               </div>
               <div class="flex flex-wrap gap-4 items-center">
                 <a href="seo.html" class="inline-flex items-center gap-1.5 text-emerald text-sm font-semibold group">Zjistit více <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-                <a href="#kontakt" class="text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">Konzultace zdarma</a>
+                <a href="#kontakt" class="text-gray-500 text-sm font-medium hover:text-gray-700 transition-colors">Konzultace zdarma</a>
               </div>
             </div>
           </div>
@@ -735,11 +768,11 @@
               <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m9 17 3-3.5 3.5 2.5 3.5-6"/></svg>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">Datová analytika a reporting</h3>
-              <p class="text-slate-400 leading-relaxed">Rozhodování na základě pocitů je drahý luxus. Ukážeme vám, co funguje, co ne, a kam investovat další korunu.</p>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Datová analytika a reporting</h3>
+              <p class="text-gray-600 leading-relaxed">Rozhodování na základě pocitů je drahý luxus. Ukážeme vám, co funguje, co ne, a kam investovat další korunu.</p>
             </div>
             <div>
-              <ul class="space-y-2.5 mb-6 text-sm text-slate-400">
+              <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
                 <li class="flex gap-2"><span class="mt-0.5 flex-shrink-0" style="color:#0EA5E9;">✓</span> Nastavení Google Analytics 4 a konverzního trackingu</li>
                 <li class="flex gap-2"><span class="mt-0.5 flex-shrink-0" style="color:#0EA5E9;">✓</span> Custom dashboardy v Looker Studiu nebo Power BI</li>
                 <li class="flex gap-2"><span class="mt-0.5 flex-shrink-0" style="color:#0EA5E9;">✓</span> Analýzu uživatelského chování a konverzních cest</li>
@@ -752,7 +785,7 @@
               </div>
               <div class="flex flex-wrap gap-4 items-center">
                 <a href="analytics.html" class="inline-flex items-center gap-1.5 text-sm font-semibold group" style="color:#0EA5E9;">Zjistit více <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-                <a href="#kontakt" class="text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">Konzultace zdarma</a>
+                <a href="#kontakt" class="text-gray-500 text-sm font-medium hover:text-gray-700 transition-colors">Konzultace zdarma</a>
               </div>
             </div>
           </div>
@@ -765,11 +798,11 @@
               <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">E-mail marketing - správná zpráva, správnému člověku</h3>
-              <p class="text-slate-400 leading-relaxed">E-mail je stále jeden z nejefektivnějších kanálů. Zasahuje lidi, kteří o vás zájem projevili. Newslettery, automatizace a segmentace na míru.</p>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">E-mail marketing - správná zpráva, správnému člověku</h3>
+              <p class="text-gray-600 leading-relaxed">E-mail je stále jeden z nejefektivnějších kanálů. Zasahuje lidi, kteří o vás zájem projevili. Newslettery, automatizace a segmentace na míru.</p>
             </div>
             <div>
-              <ul class="space-y-2.5 mb-6 text-sm text-slate-400">
+              <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
                 <li class="flex gap-2"><span class="mt-0.5 flex-shrink-0" style="color:#F59E0B;">✓</span> Tvorbu a pravidelnou správu newsletterů</li>
                 <li class="flex gap-2"><span class="mt-0.5 flex-shrink-0" style="color:#F59E0B;">✓</span> Automatizaci e-mailových sekvencí - uvítací, prodejní, retenční</li>
                 <li class="flex gap-2"><span class="mt-0.5 flex-shrink-0" style="color:#F59E0B;">✓</span> Segmentaci databáze kontaktů podle chování a zájmů</li>
@@ -782,7 +815,7 @@
               </div>
               <div class="flex flex-wrap gap-4 items-center">
                 <a href="email.html" class="inline-flex items-center gap-1.5 text-sm font-semibold group" style="color:#F59E0B;">Zjistit více <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-                <a href="#kontakt" class="text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">Konzultace zdarma</a>
+                <a href="#kontakt" class="text-gray-500 text-sm font-medium hover:text-gray-700 transition-colors">Konzultace zdarma</a>
               </div>
             </div>
           </div>
@@ -795,11 +828,11 @@
               <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"><path d="m12 3-1.912 5.813a2 2 0 01-1.275 1.275L3 12l5.813 1.912a2 2 0 011.275 1.275L12 21l1.912-5.813a2 2 0 011.275-1.275L21 12l-5.813-1.912a2 2 0 01-1.275-1.275L12 3z"/></svg>
               </div>
-              <h3 class="text-xl font-bold text-white mb-3">Tvorba webů - moderní web, který skutečně prodává!</h3>
-              <p class="text-slate-400 leading-relaxed">Stavíme weby, které vypadají dobře, načítají se rychle a přivádějí zákazníky. Web není jen vizitka - je to váš nejtvrdší pracovník.</p>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Tvorba webů - moderní web, který skutečně prodává!</h3>
+              <p class="text-gray-600 leading-relaxed">Stavíme weby, které vypadají dobře, načítají se rychle a přivádějí zákazníky. Web není jen vizitka - je to váš nejtvrdší pracovník.</p>
             </div>
             <div>
-              <ul class="space-y-2.5 mb-6 text-sm text-slate-400">
+              <ul class="space-y-2.5 mb-6 text-sm text-gray-600">
                 <li class="flex gap-2"><span class="text-purple mt-0.5 flex-shrink-0">✓</span> Rychlejší nasazení - týdny, ne měsíce</li>
                 <li class="flex gap-2"><span class="text-purple mt-0.5 flex-shrink-0">✓</span> UX optimalizovaný na základě dat a výzkumu</li>
                 <li class="flex gap-2"><span class="text-purple mt-0.5 flex-shrink-0">✓</span> Responzivní design na každém zařízení</li>
@@ -812,7 +845,7 @@
               </div>
               <div class="flex flex-wrap gap-4 items-center">
                 <a href="ai-weby.html" class="inline-flex items-center gap-1.5 text-sm font-semibold group" style="color:#8B5CF6;">Zjistit více <svg class="transition-transform group-hover:translate-x-1" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-                <a href="#kontakt" class="text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">Konzultace zdarma</a>
+                <a href="#kontakt" class="text-gray-500 text-sm font-medium hover:text-gray-700 transition-colors">Konzultace zdarma</a>
               </div>
             </div>
           </div>
@@ -824,8 +857,8 @@
     <!-- Bottom CTA -->
     <div class="reveal mt-8 p-6 lg:p-8 rounded-2xl glass flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
       <div>
-        <p class="font-semibold text-white mb-1">Nevíte, co přesně potřebujete?</p>
-        <p class="text-slate-400 text-sm">To je naprosto v pořádku. Ozvěte se nám a společně vymyslíme, která kombinace služeb dává pro váš byznys největší smysl.</p>
+        <p class="font-semibold text-gray-900 mb-1">Nevíte, co přesně potřebujete?</p>
+        <p class="text-gray-600 text-sm">To je naprosto v pořádku. Ozvěte se nám a společně vymyslíme, která kombinace služeb dává pro váš byznys největší smysl.</p>
       </div>
       <a href="#kontakt" class="flex-shrink-0 btn-red inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold">
         Domluvit bezplatnou konzultaci
@@ -847,14 +880,14 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
       <div class="reveal">
-        <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Proč ROVIMAX</p>
-        <h2 id="proc-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
+        <p class="section-label text-xs font-bold uppercase tracking-widest mb-3">Proč ROVIMAX</p>
+        <h2 id="proc-heading" class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6">
           Méně keců,<br><span class="grad">více dat</span>
         </h2>
-        <p class="text-slate-400 text-lg leading-relaxed mb-4">
+        <p class="text-gray-600 text-lg leading-relaxed mb-4">
           V marketingu je snadné se ztratit v buzzwordech. My jdeme jinou cestou. Každý návrh, každé doporučení a každá optimalizace vychází z dat. Ne z pocitů, ne z trendů.
         </p>
-        <p class="text-slate-400 text-lg leading-relaxed mb-8">
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
           Vytvoříme strategii, která je šitá na míru Vašemu businessu!
         </p>
         <a href="#kontakt" class="btn-red inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm">
@@ -867,31 +900,31 @@
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(203,65,84,0.1);border:1px solid rgba(203,65,84,0.2);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
           </div>
-          <div><p class="font-semibold text-white text-sm">Data-driven přístup</p><p class="text-slate-500 text-sm mt-0.5">Každé rozhodnutí stojí na číslech, ne na dojmech</p></div>
+          <div><p class="font-semibold text-gray-900 text-sm">Data-driven přístup</p><p class="text-gray-500 text-sm mt-0.5">Každé rozhodnutí stojí na číslech, ne na dojmech</p></div>
         </div>
         <div class="flex gap-4 items-start p-5 glass rounded-xl">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <div><p class="font-semibold text-white text-sm">High-tech nástroje</p><p class="text-slate-500 text-sm mt-0.5">Využíváme AI, automatizaci a nejnovější marketingové platformy</p></div>
+          <div><p class="font-semibold text-gray-900 text-sm">High-tech nástroje</p><p class="text-gray-500 text-sm mt-0.5">Využíváme AI, automatizaci a nejnovější marketingové platformy</p></div>
         </div>
         <div class="flex gap-4 items-start p-5 glass rounded-xl">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
-          <div><p class="font-semibold text-white text-sm">Transparentní reporting</p><p class="text-slate-500 text-sm mt-0.5">Víte přesně, kam vaše peníze jdou a co přinášejí</p></div>
+          <div><p class="font-semibold text-gray-900 text-sm">Transparentní reporting</p><p class="text-gray-500 text-sm mt-0.5">Víte přesně, kam vaše peníze jdou a co přinášejí</p></div>
         </div>
         <div class="flex gap-4 items-start p-5 glass rounded-xl">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <div><p class="font-semibold text-white text-sm">Bez zbytečných keců</p><p class="text-slate-500 text-sm mt-0.5">Žádné „synergie" - jen jasné výsledky, které vidíte</p></div>
+          <div><p class="font-semibold text-gray-900 text-sm">Bez zbytečných keců</p><p class="text-gray-500 text-sm mt-0.5">Žádné „synergie" - jen jasné výsledky, které vidíte</p></div>
         </div>
         <div class="flex gap-4 items-start p-5 glass rounded-xl">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div><p class="font-semibold text-white text-sm">Flexibilita</p><p class="text-slate-500 text-sm mt-0.5">Spolupracujeme s freelancery, malými firmami i korporacemi</p></div>
+          <div><p class="font-semibold text-gray-900 text-sm">Flexibilita</p><p class="text-gray-500 text-sm mt-0.5">Spolupracujeme s freelancery, malými firmami i korporacemi</p></div>
         </div>
       </div>
     </div>
@@ -903,15 +936,15 @@
 
 
 <!-- ═══════════════════════════ REFERENCE GALLERY ══ -->
-<section id="reference" class="py-14 lg:py-24" aria-labelledby="reference-heading">
+<section id="reference" class="py-14 lg:py-24" style="background:#DCDEE3;" aria-labelledby="reference-heading">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
     <!-- ── MOBILE view (hidden on lg+) ── -->
     <div class="lg:hidden">
       <div class="reveal text-center max-w-xl mx-auto mb-8">
         <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
-        <h2 id="reference-heading" class="text-4xl font-black text-white leading-tight mb-3">Projekty, na které jsme <span class="grad">hrdí!</span></h2>
-        <p class="text-slate-400">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem - přinést výsledky.</p>
+        <h2 id="reference-heading" class="text-4xl font-black text-gray-900 leading-tight mb-3">Projekty, na které jsme <span class="grad">hrdí!</span></h2>
+        <p class="text-gray-600">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem - přinést výsledky.</p>
       </div>
 
       <div class="flex flex-col gap-3" id="mob-gallery">
@@ -935,8 +968,8 @@
 
       <div class="w-[340px] flex-shrink-0">
         <p class="text-[#00fffa] text-xs font-bold uppercase tracking-widest mb-3">Naše práce</p>
-        <h2 id="reference-heading-lg" class="text-5xl font-black text-white leading-tight mb-4">Projekty, na které jsme <span class="grad">hrdí!</span></h2>
-        <p class="text-slate-400 text-lg mb-8">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem - přinést výsledky.</p>
+        <h2 id="reference-heading-lg" class="text-5xl font-black text-gray-900 leading-tight mb-4">Projekty, na které jsme <span class="grad">hrdí!</span></h2>
+        <p class="text-gray-600 text-lg mb-8">Nahlédněte do naší práce. Každý projekt byl navržen s jediným cílem - přinést výsledky.</p>
         <a href="#kontakt" class="btn-red inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-base">
           Show all
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -944,35 +977,35 @@
       </div>
 
       <div id="ref-accordion" class="flex flex-row items-stretch gap-3">
-        <a href="#" class="ref-item ref-active relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+        <a href="#" class="ref-item ref-active relative rounded-2xl overflow-hidden cursor-pointer border border-gray-100 no-underline">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="PPC kampaně" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
           <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
           <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Google Ads · Sklik</p><h3 class="text-white font-black text-xl">PPC kampaně</h3></div>
           <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">PPC kampaně</span>
         </a>
-        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-gray-100 no-underline">
           <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop" alt="SEO optimalizace" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
           <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
           <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Organický růst</p><h3 class="text-white font-black text-xl">SEO optimalizace</h3></div>
           <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">SEO optimalizace</span>
         </a>
-        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-gray-100 no-underline">
           <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop" alt="META reklama" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
           <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
           <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Facebook · Instagram</p><h3 class="text-white font-black text-xl">META reklama</h3></div>
           <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">META reklama</span>
         </a>
-        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-gray-100 no-underline">
           <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2064&auto=format&fit=crop" alt="Tvorba webů" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
           <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
           <div class="ref-label-active absolute bottom-6 left-6 right-6"><p style="color:#00fffa;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Design · Vývoj</p><h3 class="text-white font-black text-xl">Tvorba webů</h3></div>
           <span class="ref-label-inactive absolute text-white/60 text-sm font-semibold whitespace-nowrap" style="bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);">Tvorba webů</span>
         </a>
-        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 no-underline">
+        <a href="#" class="ref-item relative rounded-2xl overflow-hidden cursor-pointer border border-gray-100 no-underline">
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Datová analytika" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.28) 50%,transparent 100%);"></div>
           <div class="ref-badge absolute top-4 right-4 px-2.5 py-1 rounded-full text-white/60 border border-white/10" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);backdrop-filter:blur(6px);">Připravujeme</div>
@@ -1022,11 +1055,11 @@ if (mobBtn) {
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
       <div class="reveal">
-        <p class="text-red text-xs font-bold uppercase tracking-widest mb-3">Kontakt</p>
-        <h2 id="kontakt-heading" class="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
+        <p class="section-label text-xs font-bold uppercase tracking-widest mb-3">Kontakt</p>
+        <h2 id="kontakt-heading" class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6">
           <span class="grad">Začněte růst!</span><br>Dnes.
         </h2>
-        <p class="text-slate-400 text-lg leading-relaxed mb-10">
+        <p class="text-gray-600 text-lg leading-relaxed mb-10">
           Ozvěte se nám a společně vymyslíme, která kombinace služeb dává pro váš byznys největší smysl. První konzultace je zdarma a bez závazků.
         </p>
         <div class="space-y-4">
@@ -1034,18 +1067,18 @@ if (mobBtn) {
             <div class="w-11 h-11 rounded-xl glass flex items-center justify-center flex-shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <a href="mailto:info@rovimax.cz" class="text-slate-300 hover:text-white transition-colors">info@rovimax.cz</a>
+            <a href="mailto:info@rovimax.cz" class="text-gray-600 hover:text-gray-900 transition-colors">info@rovimax.cz</a>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-11 h-11 rounded-xl glass flex items-center justify-center flex-shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#cb4154" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
             </div>
-            <a href="tel:+420000000000" class="text-slate-300 hover:text-white transition-colors">+420 XXX XXX XXX</a>
+            <a href="tel:+420000000000" class="text-gray-600 hover:text-gray-900 transition-colors">+420 XXX XXX XXX</a>
           </div>
         </div>
         <div class="mt-10 p-5 rounded-xl glass">
-          <p class="text-sm font-semibold text-white mb-1">Odpovídáme do 24 hodin</p>
-          <p class="text-slate-500 text-sm">První konzultace je vždy zdarma. Bez závazků, bez skrytých podmínek.</p>
+          <p class="text-sm font-semibold text-gray-900 mb-1">Odpovídáme do 24 hodin</p>
+          <p class="text-gray-500 text-sm">První konzultace je vždy zdarma. Bez závazků, bez skrytých podmínek.</p>
         </div>
       </div>
 
@@ -1053,40 +1086,40 @@ if (mobBtn) {
         <form id="contact-form" novalidate class="glass rounded-2xl p-8 space-y-5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label for="name" class="block text-sm font-medium text-slate-300 mb-1.5">Jméno *</label>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">Jméno *</label>
               <input type="text" id="name" name="name" required autocomplete="name" class="field" placeholder="Jan Novák">
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-slate-300 mb-1.5">Email *</label>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">Email *</label>
               <input type="email" id="email" name="email" required autocomplete="email" class="field" placeholder="jan@firma.cz">
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label for="phone" class="block text-sm font-medium text-slate-300 mb-1.5">Telefon</label>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1.5">Telefon</label>
               <input type="tel" id="phone" name="phone" autocomplete="tel" class="field" placeholder="+420 XXX XXX XXX">
             </div>
             <div>
-              <label for="company" class="block text-sm font-medium text-slate-300 mb-1.5">Firma</label>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-1.5">Firma</label>
               <input type="text" id="company" name="company" autocomplete="organization" class="field" placeholder="Název firmy">
             </div>
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium text-slate-300 mb-1.5">Zpráva *</label>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Zpráva *</label>
             <textarea id="message" name="message" required rows="5" class="field resize-none" placeholder="Napište nám, co potřebujete. Čím více informací, tím lépe se připravíme..."></textarea>
           </div>
           <button type="submit" class="btn-red w-full py-4 rounded-xl font-semibold text-base flex items-center justify-center gap-2.5">
             Odeslat poptávku
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </button>
-          <p class="text-xs text-slate-600 text-center">Odesláním souhlasíte se <a href="#" class="underline hover:text-slate-400">zpracováním osobních údajů</a>.</p>
+          <p class="text-xs text-gray-400 text-center">Odesláním souhlasíte se <a href="#" class="underline hover:text-gray-500">zpracováním osobních údajů</a>.</p>
         </form>
         <div id="form-success" class="hidden rounded-2xl p-8 text-center" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);">
           <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background:rgba(16,185,129,0.15);box-shadow:0 0 24px rgba(16,185,129,0.3);">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <p class="text-lg font-bold text-white mb-2">Poptávka odeslána!</p>
-          <p class="text-slate-400 text-sm">Ozve se vám náš tým do 24 hodin. Těšíme se na spolupráci.</p>
+          <p class="text-lg font-bold text-gray-900 mb-2">Poptávka odeslána!</p>
+          <p class="text-gray-600 text-sm">Ozve se vám náš tým do 24 hodin. Těšíme se na spolupráci.</p>
         </div>
       </div>
     </div>
@@ -1095,13 +1128,13 @@ if (mobBtn) {
 
 
 <!-- ═══════════════════════════════════ FOOTER ══ -->
-<footer class="glass-strong border-t border-white/5" role="contentinfo">
+<footer class="border-t border-gray-200" style="background:#111827;" role="contentinfo">
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
       <div>
         <img src="logo-new.svg" alt="ROVIMAX" class="h-[42px] w-auto mb-3">
-        <p class="text-slate-500 text-sm leading-relaxed">Online marketingová agentura. PPC · SEO · Data · AI</p>
-        <p class="text-slate-500 text-sm mt-2">Praha, Česká republika</p>
+        <p class="text-gray-500 text-sm leading-relaxed">Online marketingová agentura. PPC · SEO · Data · AI</p>
+        <p class="text-gray-500 text-sm mt-2">Praha, Česká republika</p>
       </div>
       <div>
         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Navigace</p>
@@ -1122,11 +1155,11 @@ if (mobBtn) {
         </nav>
       </div>
     </div>
-    <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-slate-600 text-xs">© 2026 ROVIMAX. Všechna práva vyhrazena.</p>
+    <div class="border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-400 text-xs">© 2026 ROVIMAX. Všechna práva vyhrazena.</p>
       <div class="flex gap-4">
-        <a href="#" class="text-slate-600 hover:text-slate-400 text-xs transition-colors">Ochrana osobních údajů</a>
-        <a href="#" class="text-slate-600 hover:text-slate-400 text-xs transition-colors">Cookies</a>
+        <a href="#" class="text-gray-400 hover:text-gray-500 text-xs transition-colors">Ochrana osobních údajů</a>
+        <a href="#" class="text-gray-400 hover:text-gray-500 text-xs transition-colors">Cookies</a>
       </div>
     </div>
   </div>
@@ -1135,16 +1168,118 @@ if (mobBtn) {
 </div><!-- end .page-content -->
 
 
+
 <script>
-// ══════════════════════════════════ STARFIELD ══
-// Build stars once as DOM elements; CSS animation handles the rest (no JS per frame)
+// ══════════════════════════════════ SVG FOLLOWER ══
+(function() {
+  const stage = document.getElementById('svg-follower');
+  const hero  = document.getElementById('hero-section');
+  if (!stage || !hero) return;
+
+  const COLORS      = ['#cb4154','#8B5CF6','#0EA5E9','#10B981','#F59E0B'];
+  const REMOVE_DELAY = 420;
+
+  class Follower {
+    constructor(color) {
+      this.color  = color;
+      this.points = [];
+      this.line   = document.createElementNS('http://www.w3.org/2000/svg','path');
+      this.line.style.fill        = color;
+      this.line.style.stroke      = color;
+      this.line.style.strokeWidth = '1';
+      stage.appendChild(this.line);
+    }
+    _drift() { return (Math.random() - 0.5) * 3; }
+    add(pos) {
+      const dir = {x:0,y:0};
+      if (this.points[0]) {
+        dir.x = (pos.x - this.points[0].position.x) * 0.25;
+        dir.y = (pos.y - this.points[0].position.y) * 0.25;
+      }
+      const pt = { position:{...pos}, time:Date.now(),
+        drift:{ x:this._drift()+dir.x/2, y:this._drift()+dir.y/2 },
+        age:0, direction:{...dir} };
+      const r = Math.random();
+      if      (r < 0.10) this._makeCircle(pt);
+      else if (r < 0.20) this._makeSquare(pt);
+      else if (r < 0.30) this._makeTriangle(pt);
+      this.points.unshift(pt);
+    }
+    _buildPath() {
+      const pts = this.points;
+      if (!pts.length) return '';
+      const path = ['M'];
+      let fwd = true, i = 0;
+      while (i >= 0) {
+        const p = pts[i];
+        const offX = p.direction.x * ((i - pts.length) / pts.length) * 0.6;
+        const offY = p.direction.y * ((i - pts.length) / pts.length) * 0.6;
+        const x = p.position.x + (fwd ?  offY : -offY);
+        const y = p.position.y + (fwd ?  offX : -offX);
+        p.age += 0.2;
+        path.push(x + p.drift.x * p.age, y + p.drift.y * p.age);
+        i += fwd ? 1 : -1;
+        if (i === pts.length) { i--; fwd = false; }
+      }
+      return path.join(' ');
+    }
+    trim() {
+      if (this.points.length) {
+        const last = this.points[this.points.length - 1];
+        if (last.time < Date.now() - REMOVE_DELAY) this.points.pop();
+      }
+      this.line.setAttribute('d', this._buildPath());
+    }
+    _spawn(el, pt) {
+      stage.appendChild(el);
+      el.style.transform  = `translate(${pt.position.x}px,${pt.position.y}px)`;
+      el.style.transition = 'all 0.5s ease-out';
+      const dx = pt.position.x + pt.direction.x * (Math.random()*20) + pt.drift.x * (Math.random()*10);
+      const dy = pt.position.y + pt.direction.y * (Math.random()*20) + pt.drift.y * (Math.random()*10);
+      setTimeout(() => {
+        el.style.transform = `translate(${dx}px,${dy}px) scale(0) rotate(${Math.random()*360}deg)`;
+        setTimeout(() => { if (stage.contains(el)) stage.removeChild(el); }, 500);
+      }, 10);
+    }
+    _makeCircle(pt) {
+      const el = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      const r  = (Math.abs(pt.direction.x) + Math.abs(pt.direction.y));
+      el.setAttribute('r',''+r); el.setAttribute('cx','0'); el.setAttribute('cy','0');
+      el.style.fill = this.color; this._spawn(el, pt);
+    }
+    _makeSquare(pt) {
+      const el = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      const s  = (Math.abs(pt.direction.x) + Math.abs(pt.direction.y)) * 1.5;
+      el.setAttribute('width',''+s); el.setAttribute('height',''+s);
+      el.style.fill = this.color; this._spawn(el, pt);
+    }
+    _makeTriangle(pt) {
+      const el = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+      const s  = (Math.abs(pt.direction.x) + Math.abs(pt.direction.y)) * 1.5;
+      el.setAttribute('points',`0,0 ${s},${s/2} 0,${s}`);
+      el.style.fill = this.color; this._spawn(el, pt);
+    }
+  }
+
+  const followers = COLORS.map(c => new Follower(c));
+
+  function loop() { followers.forEach(f => f.trim()); requestAnimationFrame(loop); }
+  loop();
+
+  hero.addEventListener('mousemove', function(e) {
+    const rect = hero.getBoundingClientRect();
+    const pos  = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    followers.forEach(f => f.add(pos));
+  }, { passive: true });
+})();
+
+// ══════════════════════════════════ STARFIELD — disabled for light theme ══
+/* starfield disabled
 (function() {
   const container = document.getElementById('starfield');
   const count = Math.min(120, Math.floor(window.innerWidth * window.innerHeight / 8000));
   const durations = [3, 4, 5, 6, 7, 8, 10, 12];
   const sheet = document.createElement('style');
-
-  // Create a few keyframe variants
   sheet.textContent = `
     @keyframes tw0{0%,100%{opacity:.1}50%{opacity:.85}}
     @keyframes tw1{0%,100%{opacity:.05}50%{opacity:.7}}
@@ -1152,7 +1287,6 @@ if (mobBtn) {
     @keyframes tw3{0%,100%{opacity:.08}60%{opacity:.6}}
   `;
   document.head.appendChild(sheet);
-
   const frag = document.createDocumentFragment();
   for (let i = 0; i < count; i++) {
     const s = document.createElement('div');
@@ -1172,6 +1306,7 @@ if (mobBtn) {
   }
   container.appendChild(frag);
 })();
+*/
 
 
 // ══════════════════════════════════════ NAV ══
@@ -1233,12 +1368,12 @@ function switchSluzbyTab(id, btn) {
   document.querySelectorAll('.sluzby-panel').forEach(p => p.classList.add('hidden'));
   // deactivate all tab buttons
   document.querySelectorAll('.sluzby-tab').forEach(t => {
-    t.classList.remove('text-white');
-    t.classList.add('text-slate-400');
+    t.classList.remove('text-gray-900');
+    t.classList.add('text-gray-500');
   });
   // activate clicked button
-  btn.classList.remove('text-slate-400');
-  btn.classList.add('text-white');
+  btn.classList.remove('text-gray-500');
+  btn.classList.add('text-gray-900');
   // move indicator
   moveSluzbyIndicator(btn);
   // show panel with animation
@@ -1279,9 +1414,9 @@ const navLinks = document.querySelectorAll('nav a[href^="#"]');
 const activeObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      navLinks.forEach(l => { l.classList.remove('text-white'); l.classList.add('text-slate-400'); });
+      navLinks.forEach(l => { l.classList.remove('text-gray-900'); l.classList.add('text-gray-600'); });
       const a = document.querySelector(`nav a[href="#${e.target.id}"]`);
-      if (a) { a.classList.add('text-white'); a.classList.remove('text-slate-400'); }
+      if (a) { a.classList.add('text-gray-900'); a.classList.remove('text-gray-600'); }
     }
   });
 }, { threshold: 0.4 });
