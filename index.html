@@ -979,9 +979,40 @@
                 </div>
               </div>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2">
+              <!-- Language toggle — circle with dropdown -->
+              <div class="relative" id="lang-dropdown-wrap">
+                <button id="lang-toggle" onclick="toggleLangDropdown()"
+                  class="flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold transition-colors"
+                  style="background:rgba(255,255,255,0.12);color:#fff;"
+                  onmouseover="this.style.background='rgba(255,255,255,0.22)';"
+                  onmouseout="this.style.background='rgba(255,255,255,0.12)';">
+                  CZ
+                </button>
+                <div id="lang-dropdown" class="hidden absolute right-0 mt-2 z-50">
+                  <div style="background:#fff;border-radius:999px;padding:6px 0;min-width:56px;box-shadow:0 4px 20px rgba(0,0,0,0.15);display:flex;flex-direction:column;align-items:center;">
+                    <button class="w-full text-center text-sm font-bold text-gray-900 py-2 px-4 cursor-default" style="line-height:1;">
+                      CZ
+                    </button>
+                    <button onclick="alert('English version coming soon!')"
+                      class="w-full text-center text-sm font-medium text-gray-500 hover:text-gray-900 py-2 px-4 transition-colors" style="line-height:1;">
+                      EN
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Paper plane — mobile only, cyan circle -->
+              <a href="mailto:info@rovimax.cz" aria-label="Napsat zprávu"
+                class="lg:hidden flex items-center justify-center w-8 h-8 rounded-full transition-colors"
+                style="background:#00e5e5;color:#000;"
+                onmouseover="this.style.background='#00cfcf';"
+                onmouseout="this.style.background='#00e5e5';">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/>
+                </svg>
+              </a>
               <a href="#kontakt"
-                class="hidden sm:inline-flex btn-dark items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-semibold">Konzultace
+                class="hidden lg:inline-flex btn-dark items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-semibold">Konzultace
                 zdarma</a>
               <button id="hamburger" class="lg:hidden p-2 rounded-lg transition-colors"
                 style="color:rgba(255,255,255,0.8);" aria-label="Otevřít menu" aria-expanded="false">
@@ -2092,6 +2123,18 @@
       setMenuIcon(menuOpen);
       hamburger.setAttribute('aria-expanded', menuOpen);
       hamburger.setAttribute('aria-label', menuOpen ? 'Zavřít menu' : 'Otevřít menu');
+    });
+
+    function toggleLangDropdown() {
+      const dd = document.getElementById('lang-dropdown');
+      dd.classList.toggle('hidden');
+    }
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const wrap = document.getElementById('lang-dropdown-wrap');
+      if (wrap && !wrap.contains(e.target)) {
+        document.getElementById('lang-dropdown').classList.add('hidden');
+      }
     });
 
     function closeMenu() {
