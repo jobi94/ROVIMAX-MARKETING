@@ -815,6 +815,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ══════════════ COVER PAGE ══════════════ -->
   <div id="cover-page" style="position:fixed;inset:0;z-index:9999;background:#1a1a2e;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
 
+    <!-- Yellow services banner -->
+    <style>
+      .services-banner {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        background: #F5A623;
+        padding: 0.55rem 0;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        z-index: 10;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .services-banner-inner {
+        display: inline-block;
+        animation: ticker 18s linear infinite;
+        padding-left: 100%;
+      }
+      @keyframes ticker {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+      }
+      @media (min-width: 768px) {
+        .services-banner {
+          text-align: center;
+          overflow: visible;
+          white-space: normal;
+          padding: 0.55rem 1rem;
+        }
+        .services-banner-inner {
+          display: inline;
+          animation: none;
+          padding-left: 0;
+        }
+      }
+    </style>
+    <div class="services-banner">
+      <span class="services-banner-inner">
+        SEO &nbsp;·&nbsp; Google Ads &nbsp;·&nbsp; Sklik &nbsp;·&nbsp; Meta Ads &nbsp;·&nbsp; E-mail marketing &nbsp;·&nbsp; Tvorba obchodní databáze &nbsp;·&nbsp; Analýza výkonnosti
+      </span>
+    </div>
+
     <!-- Breathing rings -->
     <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
       <div style="position:relative;width:min(560px,90vmin);height:min(560px,90vmin);">
